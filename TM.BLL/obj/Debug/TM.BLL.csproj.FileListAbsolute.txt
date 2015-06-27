@@ -1,0 +1,11 @@
+D:\TASKMINIMIZER\TM.BLL\bin\Debug\TM.BLL.dll.config
+D:\TASKMINIMIZER\TM.BLL\bin\Debug\TM.BLL.dll
+D:\TASKMINIMIZER\TM.BLL\bin\Debug\TM.BLL.pdb
+D:\TASKMINIMIZER\TM.BLL\bin\Debug\EntityFramework.dll
+D:\TASKMINIMIZER\TM.BLL\bin\Debug\EntityFramework.SqlServer.dll
+D:\TASKMINIMIZER\TM.BLL\bin\Debug\Newtonsoft.Json.dll
+D:\TASKMINIMIZER\TM.BLL\bin\Debug\EntityFramework.xml
+D:\TASKMINIMIZER\TM.BLL\bin\Debug\EntityFramework.SqlServer.xml
+D:\TASKMINIMIZER\TM.BLL\bin\Debug\Newtonsoft.Json.xml
+D:\TASKMINIMIZER\TM.BLL\obj\Debug\TM.BLL.dll
+D:\TASKMINIMIZER\TM.BLL\obj\Debug\TM.BLL.pdb
