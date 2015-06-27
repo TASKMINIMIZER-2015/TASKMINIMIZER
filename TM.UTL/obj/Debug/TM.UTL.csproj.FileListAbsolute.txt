@@ -2,3 +2,4 @@ D:\TASKMINIMIZER\TM.UTL\bin\Debug\TM.UTL.dll
 D:\TASKMINIMIZER\TM.UTL\bin\Debug\TM.UTL.pdb
 D:\TASKMINIMIZER\TM.UTL\obj\Debug\TM.UTL.dll
 D:\TASKMINIMIZER\TM.UTL\obj\Debug\TM.UTL.pdb
+D:\TASKMINIMIZER\TM.UTL\obj\Debug\TM.UTL.csprojResolveAssemblyReference.cache
