@@ -9,3 +9,4 @@ D:\TASKMINIMIZER\TM.BLL\bin\Debug\EntityFramework.SqlServer.xml
 D:\TASKMINIMIZER\TM.BLL\bin\Debug\Newtonsoft.Json.xml
 D:\TASKMINIMIZER\TM.BLL\obj\Debug\TM.BLL.dll
 D:\TASKMINIMIZER\TM.BLL\obj\Debug\TM.BLL.pdb
+D:\TASKMINIMIZER\TM.BLL\obj\Debug\TM.BLL.csprojResolveAssemblyReference.cache

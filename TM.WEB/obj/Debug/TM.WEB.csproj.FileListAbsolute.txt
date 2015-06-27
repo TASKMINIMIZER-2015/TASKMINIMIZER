@@ -30,3 +30,4 @@ D:\TASKMINIMIZER\TM.WEB\bin\System.Web.WebPages.Deployment.xml
 D:\TASKMINIMIZER\TM.WEB\bin\System.Web.WebPages.Razor.xml
 D:\TASKMINIMIZER\TM.WEB\obj\Debug\TM.WEB.dll
 D:\TASKMINIMIZER\TM.WEB\obj\Debug\TM.WEB.pdb
+D:\TASKMINIMIZER\TM.WEB\obj\Debug\TM.WEB.csprojResolveAssemblyReference.cache
