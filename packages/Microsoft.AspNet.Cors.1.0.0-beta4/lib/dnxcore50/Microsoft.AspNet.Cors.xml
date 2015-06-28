@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AspNet.Cors</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.AspNet.Cors.CorsMiddleware">
+            <summary>
+            An ASP.NET middleware for handling CORS.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Cors.CorsMiddleware.#ctor(Microsoft.AspNet.Builder.RequestDelegate,Microsoft.AspNet.Cors.Core.ICorsService,Microsoft.AspNet.Cors.Core.ICorsPolicyProvider,System.String)">
+            <summary>
+            Instantiates a new <see cref="T:Microsoft.AspNet.Cors.CorsMiddleware"/>.
+            </summary>
+            <param name="next">The next middleware in the pipeline.</param>
+            <param name="corsService">An instance of <see cref="T:Microsoft.AspNet.Cors.Core.ICorsService"/>.</param>
+            <param name="policyProvider">A policy provider which can get an <see cref="T:Microsoft.AspNet.Cors.Core.CorsPolicy"/>.</param>
+            <param name="policyName">An optional name of the policy to be fetched.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Cors.CorsMiddleware.#ctor(Microsoft.AspNet.Builder.RequestDelegate,Microsoft.AspNet.Cors.Core.ICorsService,Microsoft.AspNet.Cors.Core.CorsPolicy)">
+            <summary>
+            Instantiates a new <see cref="T:Microsoft.AspNet.Cors.CorsMiddleware"/>.
+            </summary>
+            <param name="next">The next middleware in the pipeline.</param>
+            <param name="corsService">An instance of <see cref="T:Microsoft.AspNet.Cors.Core.ICorsService"/>.</param>
+            <param name="policy">An instance of the <see cref="T:Microsoft.AspNet.Cors.Core.CorsPolicy"/> which can be applied.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Cors.CorsMiddleware.Invoke(Microsoft.AspNet.Http.HttpContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Builder.CorsMiddlewareExtensions">
+            <summary>
+            The <see cref="T:Microsoft.AspNet.Builder.IApplicationBuilder"/> extensions for adding CORS middleware support.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Builder.CorsMiddlewareExtensions.UseCors(Microsoft.AspNet.Builder.IApplicationBuilder,System.String)">
+            <summary>
+            Adds a CORS middleware to your web application pipeline to allow cross domain requests.
+            </summary>
+            <param name="app">The IApplicationBuilder passed to your Configure method</param>
+            <param name="policyName">The policy name of a configured policy.</param>
+            <returns>The original app parameter</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Builder.CorsMiddlewareExtensions.UseCors(Microsoft.AspNet.Builder.IApplicationBuilder,System.Action{Microsoft.AspNet.Cors.CorsPolicyBuilder})">
+            <summary>
+            Adds a CORS middleware to your web application pipeline to allow cross domain requests.
+            </summary>
+            <param name="app">The IApplicationBuilder passed to your Configure method.</param>
+            <param name="configurePolicy">A delegate which can use a policy builder to build a policy.</param>
+            <returns>The original app parameter</returns>
+        </member>
+    </members>
+</doc>

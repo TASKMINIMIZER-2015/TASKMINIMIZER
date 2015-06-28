@@ -1,0 +1,3215 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AspNet.Mvc.ModelBinding</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.AspNet.Mvc.BindAttribute">
+            <summary>
+            This attribute can be used on action parameters and types, to indicate model level metadata.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.BindAttribute.#ctor(System.String[])">
+            <summary>
+            Creates a new instace of <see cref="T:Microsoft.AspNet.Mvc.BindAttribute"/>.
+            </summary>
+            <param name="include">Names of parameters to include in binding.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.BindAttribute.#ctor(System.Type)">
+            <summary>
+            Creates a new instance of <see cref="T:Microsoft.AspNet.Mvc.BindAttribute"/>.
+            </summary>
+            <param name="predicateProviderType">The type which implements 
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IPropertyBindingPredicateProvider"/>.
+            </param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.BindAttribute.PredicateProviderType">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.BindAttribute.Include">
+            <summary>
+            Gets the names of properties to include in model binding.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.BindAttribute.Prefix">
+            <summary>
+            Allows a user to specify a particular prefix to match during model binding.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.BindAttribute.Microsoft#AspNet#Mvc#IModelNameProvider#Name">
+            <summary>
+            Represents the model name used during model binding.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.BindAttribute.PropertyFilter">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.BindingInfo">
+            <summary>
+            Binding info which represents metadata associated to an action parameter.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.BindingInfo.BindingSource">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.BindingInfo.BinderModelName">
+            <summary>
+            Gets or sets the binder model name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.BindingInfo.BinderType">
+            <summary>
+            Gets or sets the <see cref="T:System.Type"/> of the model binder used to bind the model.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.BindingInfo.PropertyBindingPredicateProvider">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IPropertyBindingPredicateProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.BindingInfo.GetBindingInfo(System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            Constructs a new instance of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingInfo"/> from the given <paramref name="attributes"/>.
+            </summary>
+            <param name="attributes">A collection of attributes which are used to construct <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingInfo"/>
+            </param>
+            <returns>A new instance of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingInfo"/>.</returns>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.BodyBindingState">
+            <summary>
+            Represents state of models which are bound using body.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.ModelBinding.BodyBindingState.NotBodyBased">
+            <summary>
+            Represents if there has been no metadata found which needs to read the body during the current
+            model binding process.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.ModelBinding.BodyBindingState.FormatterBased">
+            <summary>
+            Represents if there is a <see cref="F:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.Body"/> that
+            has been found during the current model binding process.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.ModelBinding.BodyBindingState.FormBased">
+            <summary>
+            Represents if there is a <see cref = "F:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.Form" /> that
+            has been found during the current model binding process.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.IPropertyBindingPredicateProvider">
+            <summary>
+            Provides a predicate which can determines which model properties should be bound by model binding.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.IPropertyBindingPredicateProvider.PropertyFilter">
+            <summary>
+            Gets a predicate which can determines which model properties should be bound by model binding.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext">
+            <summary>
+            A context that contains operating information for model binding and validation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.GetChildModelBindingContext(Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext,System.String,Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata)">
+            <summary>
+            Constructs a new instance of the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext"/> class using the
+            <paramref name="bindingContext" />.
+            </summary>
+            <param name="bindingContext">Existing <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext"/>.</param>
+            <param name="modelName">Model name of associated with the new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext"/>.</param>
+            <param name="modelMetadata">Model metadata of associated with the new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext"/>.
+            </param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.GetModelBindingContext(Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata,Microsoft.AspNet.Mvc.ModelBinding.BindingInfo,System.String)">
+            <summary>
+            Constructs a new instance of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext"/> from given <paramref name="metadata"/>
+            and <paramref name="bindingInfo"/>.
+            </summary>
+            <param name="metadata"><see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.ModelMetadata"/> associated with the model.</param>
+            <param name="bindingInfo"><see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingInfo"/> associated with the model.</param>
+            <param name="modelName">An optional name of the model to be used.</param>
+            <returns>A new instance of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext"/>.</returns>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.OperationBindingContext">
+            <summary>
+            Represents the <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.OperationBindingContext"/> associated with this context.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.Model">
+            <summary>
+            Gets or sets the model value for the current operation.
+            </summary>
+            <remarks>
+            The <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.Model"/> will typically be set for a binding operation that works
+            against a pre-existing model object to update certain properties.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.ModelMetadata">
+            <summary>
+            Gets or sets the metadata for the model associated with this context.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.ModelName">
+            <summary>
+            Gets or sets the name of the model. This property is used as a key for looking up values in
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IValueProvider"/> during model binding.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.ModelState">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary"/> used to capture <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.ModelState"/> values
+            for properties in the object graph of the model when binding.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.ModelType">
+            <summary>
+            Gets the type of the model.
+            </summary>
+            <remarks>
+            The <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.ModelMetadata"/> property must be set to access this property.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.BinderModelName">
+            <summary>
+            Gets or sets a model name which is explicitly set using an <see cref="T:Microsoft.AspNet.Mvc.IModelNameProvider"/>. 
+            <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.Model"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.BindingSource">
+            <summary>
+            Gets or sets a value which represents the <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.BindingSource"/> associated with the 
+            <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.Model"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.BinderType">
+            <summary>
+            Gets the <see cref="T:System.Type"/> of an <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinder"/> associated with the 
+            <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.Model"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.FallbackToEmptyPrefix">
+            <summary>
+            Gets or sets a value that indicates whether the binder should use an empty prefix to look up
+            values in <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IValueProvider"/> when no values are found using the
+            <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.ModelName"/> prefix.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext.ValueProvider">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IValueProvider"/> associated with this context.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingResult">
+            <summary>
+            Contains the result of model binding.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingResult.#ctor(System.Object,System.String,System.Boolean)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingResult"/>.
+            </summary>
+            <param name="model">The model which was created by the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinder"/>.</param>
+            <param name="key">The key using which was used to attempt binding the model.</param>
+            <param name="isModelSet">A value that represents if the model has been set by the
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinder"/>.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingResult.Model">
+            <summary>
+            Gets the model associated with this context.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingResult.Key">
+            <summary>
+            <para>
+            Gets the model name which was used to bind the model.
+            </para>
+            <para>
+            This property can be used during validation to add model state for a bound model.
+            </para>
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingResult.IsModelSet">
+            <summary>
+            <para>
+            Gets a value indicating whether or not the <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingResult.Model"/> value has been set.
+            </para>
+            <para>
+            This property can be used to distinguish between a model binder which does not find a value and
+            the case where a model binder sets the <c>null</c> value.
+            </para>
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer">
+            <summary>
+            Associates a model object with it's corresponding <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.#ctor(Microsoft.AspNet.Mvc.ModelBinding.IModelMetadataProvider,Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata,System.Object)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/>.
+            </summary>
+            <param name="metadataProvider">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelMetadataProvider"/>.</param>
+            <param name="metadata">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/>.</param>
+            <param name="model">The model object. May be <c>null</c>.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.#ctor(Microsoft.AspNet.Mvc.ModelBinding.IModelMetadataProvider,Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer,Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata,System.Func{System.Object,System.Object})">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/>.
+            </summary>
+            <param name="metadataProvider">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelMetadataProvider"/>.</param>
+            <param name="container">The container <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/>.</param>
+            <param name="metadata">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/>.</param>
+            <param name="modelAccessor">A model accessor function. May be <c>null</c>.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.#ctor(Microsoft.AspNet.Mvc.ModelBinding.IModelMetadataProvider,Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer,Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata,System.Object)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/>.
+            </summary>
+            <param name="metadataProvider">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelMetadataProvider"/>.</param>
+            <param name="container">The container <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/>.</param>
+            <param name="metadata">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/>.</param>
+            <param name="model">The model object. May be <c>null</c>.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.Container">
+            <summary>
+            Gets the container <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/>.
+            </summary>
+            <remarks>
+            <para>
+            The <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.Container"/> will most commonly be set as a result of calling
+            <see cref="M:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.GetExplorerForProperty(System.String)"/>. In this case, the returned <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> will
+            have it's <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.Container"/> set to the instance upon which <see cref="M:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.GetExplorerForProperty(System.String)"/>
+            was called.
+            </para>
+            <para>
+            This however is not a requirement. The <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.Container"/> is informational, and may not
+            represent a type that defines the property represented by <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.Metadata"/>. This can
+            occur when constructing a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> based on evaluation of a complex
+            expression.
+            </para>
+            <para>
+            If calling code relies on a parent-child relationship between <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/>
+            instances, then use <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ContainerType"/> to validate this assumption.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.Metadata">
+            <summary>
+            Gets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.Model">
+            <summary>
+            Gets the model object.
+            </summary>
+            <remarks>
+            Retrieving the <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.Model"/> object will execute the model accessor function if this
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> was provided with one.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.ModelType">
+            <remarks>
+            Retrieving the <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.ModelType"/> will execute the model accessor function if this
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> was provided with one.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.Properties">
+            <summary>
+            Gets the properties.
+            </summary>
+            <remarks>
+            Includes a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> for each property of the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/>
+            for <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.ModelType"/>. 
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.GetExplorerForModel(System.Object)">
+            <summary>
+            Gets a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> for the given <paramref name="model"/> value.
+            </summary>
+            <param name="model">The model value.</param>
+            <returns>A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/>.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.GetExplorerForProperty(System.String)">
+            <summary>
+            Gets a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> for the property with given <paramref name="name"/>, or <c>null</c> if
+            the property cannot be found.
+            </summary>
+            <param name="name">The property name.</param>
+            <returns>A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/>, or <c>null</c>.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.GetExplorerForProperty(System.String,System.Func{System.Object,System.Object})">
+            <summary>
+            Gets a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> for the property with given <paramref name="name"/>, or <c>null</c> if
+            the property cannot be found.
+            </summary>
+            <param name="name">The property name.</param>
+            <param name="modelAccessor">An accessor for the model value.</param>
+            <returns>A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/>, or <c>null</c>.</returns>
+            <remarks>
+            As this creates a model explorer with a specific model accessor function, the result is not cached.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.GetExplorerForProperty(System.String,System.Object)">
+            <summary>
+            Gets a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> for the property with given <paramref name="name"/>, or <c>null</c> if
+            the property cannot be found.
+            </summary>
+            <param name="name">The property name.</param>
+            <param name="model">The model value.</param>
+            <returns>A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/>, or <c>null</c>.</returns>
+            <remarks>
+            As this creates a model explorer with a specific model value, the result is not cached.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.GetExplorerForExpression(System.Type,System.Object)">
+            <summary>
+            Gets a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> for the provided model value and model <see cref="T:System.Type"/>.
+            </summary>
+            <param name="modelType">The model <see cref="T:System.Type"/>.</param>
+            <param name="model">The model value.</param>
+            <returns>A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/>.</returns>
+            <remarks>
+            <para>
+            A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> created by <see cref="M:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.GetExplorerForExpression(System.Type,System.Object)"/>
+            represents the result of executing an arbitrary expression against the model contained
+            in the current <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> instance.
+            </para>
+            <para>
+            The returned <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> will have the current instance set as its <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.Container"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.GetExplorerForExpression(Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata,System.Object)">
+            <summary>
+            Gets a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> for the provided model value and model <see cref="T:System.Type"/>.
+            </summary>
+            <param name="modelType">The model <see cref="T:System.Type"/>.</param>
+            <param name="model">The model value.</param>
+            <returns>A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/>.</returns>
+            <remarks>
+            <para>
+            A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> created by
+            <see cref="M:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.GetExplorerForExpression(Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata,System.Object)"/>
+            represents the result of executing an arbitrary expression against the model contained
+            in the current <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> instance.
+            </para>
+            <para>
+            The returned <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> will have the current instance set as its <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.Container"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.GetExplorerForExpression(System.Type,System.Func{System.Object,System.Object})">
+            <summary>
+            Gets a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> for the provided model value and model <see cref="T:System.Type"/>.
+            </summary>
+            <param name="modelType">The model <see cref="T:System.Type"/>.</param>
+            <param name="model">The model value.</param>
+            <returns>A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/>.</returns>
+            <remarks>
+            <para>
+            A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> created by 
+            <see cref="M:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.GetExplorerForExpression(System.Type,System.Func{System.Object,System.Object})"/>
+            represents the result of executing an arbitrary expression against the model contained
+            in the current <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> instance.
+            </para>
+            <para>
+            The returned <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> will have the current instance set as its <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.Container"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.GetExplorerForExpression(Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata,System.Func{System.Object,System.Object})">
+            <summary>
+            Gets a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> for the provided model value and model <see cref="T:System.Type"/>.
+            </summary>
+            <param name="modelType">The model <see cref="T:System.Type"/>.</param>
+            <param name="model">The model value.</param>
+            <returns>A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/>.</returns>
+            <remarks>
+            <para>
+            A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> created by 
+            <see cref="M:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.GetExplorerForExpression(Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata,System.Func{System.Object,System.Object})"/>
+            represents the result of executing an arbitrary expression against the model contained
+            in the current <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> instance.
+            </para>
+            <para>
+            The returned <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> will have the current instance set as its <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.Container"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorerExtensions">
+            <summary>
+            Extension methods for <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorerExtensions.GetSimpleDisplayText(Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer)">
+            <summary>
+            Gets a simple display string for the <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer.Model"/> property
+            of <paramref name="modelExplorer"/>.
+            </summary>
+            <param name="modelExplorer">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/>.</param>
+            <returns>A simple display string for the model.</returns>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata">
+            <summary>
+            A metadata representation of a model type, property or parameter.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.DefaultOrder">
+            <summary>
+            The default value of <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.Order"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.#ctor(Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/>.
+            </summary>
+            <param name="identity">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity"/>.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ContainerType">
+            <summary>
+            Gets the container type of this metadata if it represents a property, otherwise <c>null</c>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.MetadataKind">
+            <summary>
+            Gets a value indicating the kind of metadata element represented by the current instance.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ModelType">
+            <summary>
+            Gets the model type represented by the current instance.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.PropertyName">
+            <summary>
+            Gets the property name represented by the current instance.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.Identity">
+            <summary>
+            Gets the key for the current instance.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.AdditionalValues">
+            <summary>
+            Gets a collection of additional information about the model.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.Properties">
+            <summary>
+            Gets the collection of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/> instances for the model's properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.BinderModelName">
+            <summary>
+            Gets the name of a model if specified explicitly using <see cref="T:Microsoft.AspNet.Mvc.IModelNameProvider"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.BinderType">
+            <summary>
+            Gets the <see cref="T:System.Type"/> of an <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinder"/> or an
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinderProvider"/> of a model if specified explicitly using 
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IBinderTypeProviderMetadata"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.BindingSource">
+            <summary>
+            Gets a binder metadata for this model.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ConvertEmptyStringToNull">
+            <summary>
+            Gets a value indicating whether or not to convert an empty string value to <c>null</c> when
+            representing a model as text.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.DataTypeName">
+            <summary>
+            Gets the name of the model's datatype.  Overrides <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ModelType"/> in some
+            display scenarios.
+            </summary>
+            <value><c>null</c> unless set manually or through additional metadata e.g. attributes.</value>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.Description">
+            <summary>
+            Gets the description of the model.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.DisplayFormatString">
+            <summary>
+            Gets the composite format <see cref="T:System.String"/> (see
+            http://msdn.microsoft.com/en-us/library/txafckwd.aspx) used to display the model.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.DisplayName">
+            <summary>
+            Gets the display name of the model.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.EditFormatString">
+            <summary>
+            Gets the composite format <see cref="T:System.String"/> (see
+            http://msdn.microsoft.com/en-us/library/txafckwd.aspx) used to edit the model.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.EnumDisplayNamesAndValues">
+            <summary>
+            Gets the ordered display names and values of all <see cref="T:System.Enum"/> values in <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ModelType"/> or
+            <c>Nullable.GetUnderlyingType(ModelType)</c>.
+            </summary>
+            <value>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of mappings between <see cref="T:System.Enum"/> field names
+            and values. <c>null</c> if <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.IsEnum"/> is <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.EnumNamesAndValues">
+            <summary>
+            Gets the names and values of all <see cref="T:System.Enum"/> values in <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ModelType"/> or
+            <c>Nullable.GetUnderlyingType(ModelType)</c>.
+            </summary>
+            <value>
+            An <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2"/> of mappings between <see cref="T:System.Enum"/> field names
+            and values. <c>null</c> if <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.IsEnum"/> is <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.HasNonDefaultEditFormat">
+            <summary>
+            Gets a value indicating whether <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.EditFormatString"/> has a non-<c>null</c>, non-empty
+            value different from the default for the datatype.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.HtmlEncode">
+            <summary>
+            Gets a value indicating whether the value should be HTML-encoded.
+            </summary>
+            <value>If <c>true</c>, value should be HTML-encoded. Default is <c>true</c>.</value>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.HideSurroundingHtml">
+            <summary>
+            Gets a value indicating whether the "HiddenInput" display template should return
+            <c>string.Empty</c> (not the expression value) and whether the "HiddenInput" editor template should not
+            also return the expression value (together with the hidden &lt;input&gt; element).
+            </summary>
+            <remarks>
+            If <c>true</c>, also causes the default <see cref="T:System.Object"/> display and editor templates to return HTML
+            lacking the usual per-property &lt;div&gt; wrapper around the associated property. Thus the default
+            <see cref="T:System.Object"/> display template effectively skips the property and the default <see cref="T:System.Object"/>
+            editor template returns only the hidden &lt;input&gt; element for the property.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.IsEnum">
+            <summary>
+            Gets a value indicating whether <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ModelType"/> or <c>Nullable.GetUnderlyingType(ModelType)</c> is
+            for an <see cref="T:System.Enum"/>.
+            </summary>
+            <value>
+            <c>true</c> if <c>type.IsEnum</c> (<c>type.GetTypeInfo().IsEnum</c> for DNX Core 5.0) is <c>true</c> for
+            <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ModelType"/> or <c>Nullable.GetUnderlyingType(ModelType)</c>; <c>false</c> otherwise.
+            </value>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.IsFlagsEnum">
+            <summary>
+            Gets a value indicating whether <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ModelType"/> or <c>Nullable.GetUnderlyingType(ModelType)</c> is
+            for an <see cref="T:System.Enum"/> with an associated <see cref="T:System.FlagsAttribute"/>.
+            </summary>
+            <value>
+            <c>true</c> if <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.IsEnum"/> is <c>true</c> and <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ModelType"/> or
+            <c>Nullable.GetUnderlyingType(ModelType)</c> has an associated <see cref="T:System.FlagsAttribute"/>; <c>false</c>
+            otherwise.
+            </value>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.IsReadOnly">
+            <summary>
+            Gets a value indicating whether or not the model value is read-only. This is only applicable when
+            the current instance represents a property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.IsRequired">
+            <summary>
+            Gets a value indicating whether or not the model value is required. This is only applicable when
+            the current instance represents a property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.Order">
+            <summary>
+            Gets a value indicating where the current metadata should be ordered relative to other properties
+            in its containing type.
+            </summary>
+            <remarks>
+            <para>For example this property is used to order items in <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.Properties"/>.</para>
+            <para>The default order is <c>10000</c>.</para>
+            </remarks>
+            <value>The order value of the current metadata.</value>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.NullDisplayText">
+            <summary>
+            Gets the text to display when the model is <c>null</c>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.PropertyBindingPredicateProvider">
+            <summary>
+            Gets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IPropertyBindingPredicateProvider"/>, which can determine which properties
+            should be model bound.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ShowForDisplay">
+            <summary>
+            Gets a value that indicates whether the property should be displayed in read-only views.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ShowForEdit">
+            <summary>
+            Gets a value that indicates whether the property should be displayed in editable views.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.SimpleDisplayProperty">
+            <summary>
+            Gets  a value which is the name of the property used to display the model.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.TemplateHint">
+            <summary>
+            Gets a string used by the templating system to discover display-templates and editor-templates.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ValidatorMetadata">
+            <summary>
+            Gets a collection of metadata items for validators.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.IsComplexType">
+            <summary>
+            Gets a value indicating whether <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ModelType"/> is a simple type.
+            </summary>
+            <remarks>
+            A simple type is defined as a <see cref="T:System.Type"/> which has a
+            <see cref="T:System.ComponentModel.TypeConverter"/> that can convert from <see cref="T:System.String"/>.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.IsNullableValueType">
+            <summary>
+            Gets a value indicating whether or not <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ModelType"/> is a <see cref="T:System.Nullable`1"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.IsCollectionType">
+            <summary>
+            Gets a value indicating whether or not <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ModelType"/> is a collection type.
+            </summary>
+            <remarks>
+            A collection type is defined as a <see cref="T:System.Type"/> which is assignable to
+            <see cref="T:System.Collections.IEnumerable"/>, and is not a <see cref="T:System.String"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.GetDisplayName">
+            <summary>
+            Gets a display name for the model.
+            </summary>
+            <remarks>
+            <see cref="M:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.GetDisplayName"/> will return the first of the following expressions which has a
+            non-<c>null</c> value: <c>DisplayName</c>, <c>PropertyName</c>, <c>ModelType.Name</c>.
+            </remarks>
+            <returns>The display name.</returns>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadataProviderExtensions">
+            <summary>
+            Extensions methods for <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelMetadataProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadataProviderExtensions.GetModelExplorerForType(Microsoft.AspNet.Mvc.ModelBinding.IModelMetadataProvider,System.Type,System.Object)">
+            <summary>
+            Gets a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer"/> for the provided <paramref name="modelType"/> and
+            <paramref name="model"/>.
+            </summary>
+            <param name="provider">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelMetadataProvider"/>.</param>
+            <param name="modelType">The declared <see cref="T:System.Type"/> of the model object.</param>
+            <param name="model">The model object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadataProviderExtensions.GetMetadataForProperty(Microsoft.AspNet.Mvc.ModelBinding.IModelMetadataProvider,System.Type,System.String)">
+            <summary>
+            Gets a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/> for property identified by the provided
+            <paramref name="containerType"/> and <paramref name="propertyName"/>.
+            </summary>
+            <param name="provider">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/>.</param>
+            <param name="containerType">The <see cref="T:System.Type"/> for which the property is defined.</param>
+            <param name="propertyName">The property name.</param>
+            <returns>A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/> for the property.</returns>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.ModelPropertyCollection">
+            <summary>
+            A read-only list of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/> objects which represent model properties.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelPropertyCollection.#ctor(System.Collections.Generic.IEnumerable{Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata})">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelPropertyCollection"/>.
+            </summary>
+            <param name="properties">The properties.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelPropertyCollection.Item(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelPropertyCollection.Item(System.String)">
+            <summary>
+            Gets a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/> instance for the property corresponding to <paramref name="propertyName"/>.
+            </summary>
+            <param name="propertyName">
+            The property name. Property names are compared using <see cref="F:System.StringComparison.Ordinal"/>
+            </param>
+            <returns>
+            The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/> instance for the property specified by <paramref name="propertyName"/>, or null
+            if no match can be found.
+            </returns>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelPropertyCollection.Count">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelPropertyCollection.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelPropertyCollection.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary">
+            <summary>
+            Represents the state of an attempt to bind values from an HTTP Request to an action method, which includes
+            validation information.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.DefaultMaxAllowedErrors">
+            <summary>
+            The default value for <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.MaxAllowedErrors"/> of <c>200</c>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.#ctor(Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary"/> class by using values that are copied
+            from the specified <paramref name="dictionary"/>.
+            </summary>
+            <param name="dictionary">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary"/> to copy values from.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.MaxAllowedErrors">
+            <summary>
+            Gets or sets the maximum allowed model state errors in this instance of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary"/>.
+            Defaults to <c>200</c>.
+            </summary>
+            <remarks>
+            <para>
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary"/> tracks the number of model errors added by calls to
+            <see cref="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.AddModelError(System.String,System.Exception)"/> or <see cref="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.TryAddModelError(System.String,System.Exception)"/>.
+            Once the value of <code>MaxAllowedErrors - 1</code> is reached, if another attempt is made to add an error,
+            the error message will be ignored and a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.TooManyModelErrorsException"/> will be added.
+            </para>
+            <para>
+            Errors added via modifying <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelState"/> directly do not count towards this limit.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.HasReachedMaxErrors">
+            <summary>
+            Gets a value indicating whether or not the maximum number of errors have been
+            recorded.
+            </summary>
+            <remarks>
+            Returns <c>true</c> if a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.TooManyModelErrorsException"/> has been recorded;
+            otherwise <c>false</c>.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.ErrorCount">
+            <summary>
+            Gets the number of errors added to this instance of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary"/> via
+            <see cref="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.AddModelError(System.String,System.Exception)"/> or <see cref="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.TryAddModelError(System.String,System.Exception)"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.Count">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.IsReadOnly">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.Keys">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.Values">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.IsValid">
+            <summary>
+            Gets a value that indicates whether any model state values in this model state dictionary is invalid or not validated.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.ValidationState">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.Item(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.AddModelError(System.String,System.Exception)">
+            <summary>
+            Adds the specified <paramref name="exception"/> to the <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelState.Errors"/> instance
+            that is associated with the specified <paramref name="key"/>.
+            </summary>
+            <param name="key">The key of the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelState"/> to add errors to.</param>
+            <param name="exception">The <see cref="T:System.Exception"/> to add.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.TryAddModelError(System.String,System.Exception)">
+            <summary>
+            Attempts to add the specified <paramref name="exception"/> to the <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelState.Errors"/>
+            instance that is associated with the specified <paramref name="key"/>. If the maximum number of allowed
+            errors has already been recorded, records a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.TooManyModelErrorsException"/> exception instead.
+            </summary>
+            <param name="key">The key of the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelState"/> to add errors to.</param>
+            <param name="exception">The <see cref="T:System.Exception"/> to add.</param>
+            <returns>
+            <c>True</c> if the given error was added, <c>false</c> if the error was ignored.
+            See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.MaxAllowedErrors"/>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.AddModelError(System.String,System.String)">
+            <summary>
+            Adds the specified <paramref name="errorMessage"/> to the <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelState.Errors"/> instance
+            that is associated with the specified <paramref name="key"/>.
+            </summary>
+            <param name="key">The key of the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelState"/> to add errors to.</param>
+            <param name="errorMessage">The error message to add.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.TryAddModelError(System.String,System.String)">
+            <summary>
+            Attempts to add the specified <paramref name="errorMessage"/> to the <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelState.Errors"/>
+            instance that is associated with the specified <paramref name="key"/>. If the maximum number of allowed
+            errors has already been recorded, records a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.TooManyModelErrorsException"/> exception instead.
+            </summary>
+            <param name="key">The key of the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelState"/> to add errors to.</param>
+            <param name="errorMessage">The error message to add.</param>
+            <returns>
+            <c>True</c> if the given error was added, <c>false</c> if the error was ignored.
+            See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.MaxAllowedErrors"/>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.GetFieldValidationState(System.String)">
+            <summary>
+            Returns the aggregate <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelValidationState"/> for items starting with the
+            specified <paramref name="key"/>.
+            </summary>
+            <param name="key">The key to look up model state errors for.</param>
+            <returns>Returns <see cref="F:Microsoft.AspNet.Mvc.ModelBinding.ModelValidationState.Unvalidated"/> if no entries are found for the specified
+            key, <see cref="F:Microsoft.AspNet.Mvc.ModelBinding.ModelValidationState.Invalid"/> if at least one instance is found with one or more model
+            state errors; <see cref="F:Microsoft.AspNet.Mvc.ModelBinding.ModelValidationState.Valid"/> otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.GetValidationState(System.String)">
+            <summary>
+            Returns <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelValidationState"/> for the <paramref name="key"/>.
+            </summary>
+            <param name="key">The key to look up model state errors for.</param>
+            <returns>Returns <see cref="F:Microsoft.AspNet.Mvc.ModelBinding.ModelValidationState.Unvalidated"/> if no entry is found for the specified
+            key, <see cref="F:Microsoft.AspNet.Mvc.ModelBinding.ModelValidationState.Invalid"/> if an instance is found with one or more model
+            state errors; <see cref="F:Microsoft.AspNet.Mvc.ModelBinding.ModelValidationState.Valid"/> otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.MarkFieldValid(System.String)">
+            <summary>
+            Marks the <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelState.ValidationState"/> for the entry with the specified <paramref name="key"/>
+            as <see cref="F:Microsoft.AspNet.Mvc.ModelBinding.ModelValidationState.Valid"/>.
+            </summary>
+            <param name="key">The key of the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelState"/> to mark as valid.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.MarkFieldSkipped(System.String)">
+            <summary>
+            Marks the <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelState.ValidationState"/> for the entry with the specified <paramref name="key"/>
+            as <see cref="F:Microsoft.AspNet.Mvc.ModelBinding.ModelValidationState.Skipped"/>.
+            </summary>
+            <param name="key">The key of the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelState"/> to mark as skipped.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.Merge(Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary)">
+            <summary>
+            Copies the values from the specified <paramref name="dictionary"/> into this instance, overwriting
+            existing values if keys are the same.
+            </summary>
+            <param name="dictionary">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary"/> to copy values from.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.SetModelValue(System.String,Microsoft.AspNet.Mvc.ModelBinding.ValueProviderResult)">
+            <summary>
+            Sets the value for the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelState"/> with the specified <paramref name="key"/> to the
+            specified <paramref name="value"/>.
+            </summary>
+            <param name="key">The key for the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelState"/> entry.</param>
+            <param name="value">The value to assign.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.ClearValidationState(System.String)">
+            <summary>
+            Clears <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary"/> entries that match the key that is passed as parameter.
+            </summary>
+            <param name="key">The key of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary"/> to clear.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.Add(System.Collections.Generic.KeyValuePair{System.String,Microsoft.AspNet.Mvc.ModelBinding.ModelState})">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.Add(System.String,Microsoft.AspNet.Mvc.ModelBinding.ModelState)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.Clear">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.Contains(System.Collections.Generic.KeyValuePair{System.String,Microsoft.AspNet.Mvc.ModelBinding.ModelState})">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.ContainsKey(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.CopyTo(System.Collections.Generic.KeyValuePair{System.String,Microsoft.AspNet.Mvc.ModelBinding.ModelState}[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.Remove(System.Collections.Generic.KeyValuePair{System.String,Microsoft.AspNet.Mvc.ModelBinding.ModelState})">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.Remove(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.TryGetValue(System.String,Microsoft.AspNet.Mvc.ModelBinding.ModelState@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelStateDictionary.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.OperationBindingContext">
+            <summary>
+            A context that contains information specific to the current request and the action whose parameters
+            are being model bound.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.OperationBindingContext.BodyBindingState">
+            <summary>
+            Represents if there has been a body bound model found during the current model binding process.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.OperationBindingContext.HttpContext">
+            <summary>
+            Gets or sets the <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.OperationBindingContext.HttpContext"/> for the current request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.OperationBindingContext.ValueProvider">
+            <summary>
+            Gets unaltered value provider collection.
+            Value providers can be filtered by specific model binders.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.OperationBindingContext.ModelBinder">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinder"/> associated with this context.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.OperationBindingContext.MetadataProvider">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelMetadataProvider"/> associated with this context.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.OperationBindingContext.ValidatorProvider">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IModelValidatorProvider"/> instance used for model validation with this
+            context.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.TooManyModelErrorsException">
+            <summary>
+            The <see cref="T:System.Exception"/> that is thrown when too many model errors are encountered.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.TooManyModelErrorsException.#ctor(System.String)">
+            <summary>
+            Creates a new instance of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.TooManyModelErrorsException"/> with the specified
+            exception <paramref name="message"/>.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource">
+            <summary>
+            A metadata object representing a source of data for model binding.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.Body">
+            <summary>
+            A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/> for the request body.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.Custom">
+            <summary>
+            A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/> for a custom model binder (unknown data source).
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.Form">
+            <summary>
+            A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/> for the request form-data.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.Header">
+            <summary>
+            A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/> for the request headers.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.ModelBinding">
+            <summary>
+            A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/> for model binding. Includes form-data, query-string
+            and route data from the request.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.Path">
+            <summary>
+            A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/> for the request url path.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.Query">
+            <summary>
+            A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/> for the request query-string.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.Services">
+            <summary>
+            A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/> for request services.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.#ctor(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/>.
+            </summary>
+            <param name="id">The id, a unique identifier.</param>
+            <param name="displayName">The display name.</param>
+            <param name="isGreedy">A value indicating whether or not the source is greedy.</param>
+            <param name="isFromRequest">
+            A value indicating whether or not the data comes from the HTTP request.
+            </param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.DisplayName">
+            <summary>
+            Gets the display name for the source.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.Id">
+            <summary>
+            Gets the unique identifier for the source. Sources are compared based on their Id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.IsGreedy">
+            <summary>
+            Gets a value indicating whether or not a source is greedy. A greedy source will bind a model in
+            a single operation, and will not decompose the model into sub-properties.
+            </summary>
+            <remarks>
+            <para>
+            For sources based on a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IValueProvider"/>, setting <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.IsGreedy"/> to <c>false</c>
+            will most closely describe the behavior. This value is used inside the default model binders to 
+            determine whether or not to attempt to bind properties of a model.
+            </para>
+            <para>
+            Set <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.IsGreedy"/> to <c>true</c> for most custom <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinder"/> implementations.
+            </para>
+            <para>
+            If a source represents an <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinder"/> which will recursively traverse a model's properties
+            and bind them individually using <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IValueProvider"/>, then set <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.IsGreedy"/> to
+            <c>true</c>.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.IsFromRequest">
+            <summary>
+            Gets a value indicating whether or not the binding source uses input from the current HTTP request.
+            </summary>
+            <remarks>
+            Some sources (like <see cref="F:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.Services"/>) are based on application state and not user
+            input. These are excluded by default from ApiExplorer diagnostics.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.CanAcceptDataFrom(Microsoft.AspNet.Mvc.ModelBinding.BindingSource)">
+            <summary>
+            Gets a value indicating whether or not the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/> can accept
+            data from <paramref name="bindingSource"/>.
+            </summary>
+            <param name="bindingSource">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/> to consider as input.</param>
+            <returns><c>True</c> if the source is compatible, otherwise <c>false</c>.</returns>
+            <remarks>
+            When using this method, it is expected that the left-hand-side is metadata specified
+            on a property or parameter for model binding, and the right hand side is a source of
+            data used by a model binder or value provider.
+            
+            This distinction is important as the left-hand-side may be a composite, but the right
+            may not.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.Equals(Microsoft.AspNet.Mvc.ModelBinding.BindingSource)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.op_Equality(Microsoft.AspNet.Mvc.ModelBinding.BindingSource,Microsoft.AspNet.Mvc.ModelBinding.BindingSource)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.op_Inequality(Microsoft.AspNet.Mvc.ModelBinding.BindingSource,Microsoft.AspNet.Mvc.ModelBinding.BindingSource)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.CompositeBindingSource">
+            <summary>
+            A <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.CompositeBindingSource.BindingSources"/> which can repesent multiple value-provider data sources.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.CompositeBindingSource.Create(System.Collections.Generic.IEnumerable{Microsoft.AspNet.Mvc.ModelBinding.BindingSource},System.String)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.CompositeBindingSource"/>.
+            </summary>
+            <param name="bindingSources">
+            The set of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/> entries.
+            Must be value-provider sources and user input.
+            </param>
+            <param name="displayName">The display name for the composite source.</param>
+            <returns>A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.CompositeBindingSource"/>.</returns>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.CompositeBindingSource.BindingSources">
+            <summary>
+            Gets the set of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/> entries.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.CompositeBindingSource.CanAcceptDataFrom(Microsoft.AspNet.Mvc.ModelBinding.BindingSource)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.IBinderTypeProviderMetadata">
+            <summary>
+            Provides a <see cref="T:System.Type"/> which implements <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinder"/> or 
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinderProvider"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.IBinderTypeProviderMetadata.BinderType">
+            <summary>
+            A <see cref="T:System.Type"/> which implements either <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinder"/> or
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinderProvider"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.IBindingSourceMetadata">
+            <summary>
+            Metadata which specificies the data source for model binding.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.IBindingSourceMetadata.BindingSource">
+            <summary>
+            Gets the <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.IBindingSourceMetadata.BindingSource"/>. 
+            </summary>
+            <remarks>
+            The <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.IBindingSourceMetadata.BindingSource"/> is metadata which can be used to determine which data
+            sources are valid for model binding of a property or parameter.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.BinderTypeBasedModelBinder">
+            <summary>
+            An <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinder"/> which can bind a model based on the value of 
+            <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.BinderType"/>. The supplied <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinder"/> 
+            type or <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinderProvider"/> type will be used to bind the model.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSourceModelBinder">
+            <summary>
+            An <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinder"/> which provides data from a specific <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/>.
+            </summary>
+            <remarks>
+            <para>
+            A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSourceModelBinder"/> is an <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinder"/> base-implementation which
+            can provide data for all parameters and model properties which specify the corresponding
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/>.
+            </para>
+            <para>
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSourceModelBinder"/> is greedy, meaning that a given instance expects to handle all
+            parameters and properties annotated with the corresponding <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/> and
+            will short-circuit the model binding process to prevent other binders from running.
+            <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.IsGreedy"/> of <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.BindingSourceModelBinder.BindingSource"/> must be set to <c>true.</c>
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.BindingSourceModelBinder.#ctor(Microsoft.AspNet.Mvc.ModelBinding.BindingSource)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSourceModelBinder"/>.
+            </summary>
+            <param name="bindingSource">
+            The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/>. Must be a single-source (non-composite) with
+            <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.IsGreedy"/> equal to <c>true</c>.
+            </param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.BindingSourceModelBinder.BindingSource">
+            <summary>
+            Gets the corresponding <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.BindingSourceModelBinder.BindModelCoreAsync(Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext)">
+            <summary>
+            Binds the model. Called when the model's supported binding-source matches <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.BindingSourceModelBinder.BindingSource"/>.
+            </summary>
+            <param name="bindingContext">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext"/>.</param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task"/> which will complete when model binding has completed.
+            </returns>
+            <remarks>
+            Other model binders will never run if this method is called. Return <c>null</c> to skip other model binders
+            but allow higher-level handling e.g. falling back to empty prefix.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.BindingSourceModelBinder.BindModelAsync(Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.ByteArrayModelBinder">
+            <summary>
+            ModelBinder to bind Byte Arrays.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ByteArrayModelBinder.BindModelAsync(Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.CancellationTokenModelBinder">
+            <summary>
+            Represents a model binder which can bind models of type <see cref="T:System.Threading.CancellationToken"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.CancellationTokenModelBinder.BindModelAsync(Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.CompositeModelBinder">
+            <summary>
+            Represents an <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinder"/> that delegates to one of a collection of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinder"/>
+            instances.
+            </summary>
+            <remarks>
+            If no binder is available and the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext"/> allows it,
+            this class tries to find a binder using an empty prefix.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.CompositeModelBinder.#ctor(System.Collections.Generic.IEnumerable{Microsoft.AspNet.Mvc.ModelBinding.IModelBinder})">
+            <summary>
+            Initializes a new instance of the CompositeModelBinder class.
+            </summary>
+            <param name="modelBinders">A collection of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinder"/> instances.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.CompositeModelBinder.ModelBinders">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.FormCollectionModelBinder">
+            <summary>
+            Modelbinder to bind form values to <see cref="T:Microsoft.AspNet.Http.IFormCollection"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.FormCollectionModelBinder.BindModelAsync(Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.FormFileModelBinder">
+            <summary>
+            Modelbinder to bind posted files to <see cref="T:Microsoft.AspNet.Http.IFormFile"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.FormFileModelBinder.BindModelAsync(Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.GenericModelBinder.GetGenericBinderType(System.Type,System.Type,System.Type,System.Type)">
+            <remarks>
+            Example: <c>GetGenericBinderType(typeof(IList&lt;T&gt;), typeof(List&lt;T&gt;),
+            typeof(ListBinder&lt;T&gt;), ...)</c> means that the <c>ListBinder&lt;T&gt;</c> type can update models that
+            implement <see cref="T:System.Collections.Generic.IList`1"/>, and if for some reason the existing model instance is not updatable the
+            binder will create a <see cref="T:System.Collections.Generic.List`1"/> object and bind to that instead. This method will return
+            <c>ListBinder&lt;T&gt;</c> or <c>null</c>, depending on whether the type and updatability checks succeed.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.HeaderModelBinder">
+            <summary>
+            An <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinder"/> which binds models from the request headers when a model
+            has the binding source <see cref="F:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.Header"/>/
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.HeaderModelBinder.#ctor">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.HeaderModelBinder"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.HeaderModelBinder.BindModelCoreAsync(Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.ICompositeModelBinder">
+            <summary>
+            Represents an aggregate of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinder"/> that delegates to one of the instances for model binding.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinder">
+            <summary>
+            Interface for model binding.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.IModelBinder.BindModelAsync(Microsoft.AspNet.Mvc.ModelBinding.ModelBindingContext)">
+            <summary>
+            Async function to bind to a particular model.
+            </summary>
+            <param name="bindingContext">The binding context which has the object to be bound.</param>
+            <returns>A Task which on completion returns a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelBindingResult"/> which represents the result
+            of the model binding process.
+            </returns>
+            <remarks>
+            A <c>null</c> return value means that this model binder was not able to handle the request.
+            Returning <c>null</c> ensures that subsequent model binders are run. If a non <c>null</c> value indicates 
+            that the model binder was able to handle the request.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinderProvider">
+            <summary>
+            Provides an activated collection of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinder"/> instances.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.IModelBinderProvider.ModelBinders">
+            <summary>
+            Gets a collection of activated ModelBinders instances.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Internal.CollectionExtensions.ToArrayWithoutNulls``1(System.Collections.Generic.ICollection{``0})">
+            <summary>
+            Convert an ICollection to an array, removing null values. Fast path for case where
+            there are no null values.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Internal.PrefixContainer">
+            <summary>
+            This is a container for prefix values. It normalizes all the values into dotted-form and then stores
+            them in a sorted array. All queries for prefixes are also normalized to dotted-form, and searches
+            for ContainsPrefix are done with a binary search.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadata">
+            <summary>
+            Binding metadata details for a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadata.BindingSource">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/>.
+            See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.BindingSource"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadata.BinderModelName">
+            <summary>
+            Gets or sets the binder model name. If <c>null</c> the property or parameter name will be used.
+            See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.BinderModelName"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadata.BinderType">
+            <summary>
+            Gets or sets the <see cref="T:System.Type"/> of the model binder used to bind the model.
+            See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.BinderType"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadata.IsReadOnly">
+            <summary>
+            Gets or sets a value indicating whether or not the model is read-only. Will be ignored
+            if the model metadata being created is not a property. If <c>null</c> then
+            <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.IsReadOnly"/> will be  computed based on the accessibility
+            of the property accessor and model <see cref="T:System.Type"/>. See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.IsReadOnly"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadata.IsRequired">
+            <summary>
+            Gets or sets a value indicating whether or not the model is a required value. Will be ignored
+            if the model metadata being created is not a property. If <c>null</c> then
+            <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.IsRequired"/> will be computed based on the model <see cref="T:System.Type"/>.
+            See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.IsRequired"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadata.PropertyBindingPredicateProvider">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IPropertyBindingPredicateProvider"/>.
+            See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.PropertyBindingPredicateProvider"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadataProviderContext">
+            <summary>
+            A context for an <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.IBindingMetadataProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadataProviderContext.#ctor(Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity,System.Collections.Generic.IReadOnlyList{System.Object})">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadataProviderContext"/>.
+            </summary>
+            <param name="key">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity"/> for the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/>.</param>
+            <param name="attributes">The attributes for the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/>.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadataProviderContext.Attributes">
+            <summary>
+            Gets the attributes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadataProviderContext.Key">
+            <summary>
+            Gets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadataProviderContext.BindingMetadata">
+            <summary>
+            Gets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadata"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DataAnnotationsMetadataProvider">
+            <summary>
+            An implementation of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.IBindingMetadataProvider"/> and <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.IDisplayMetadataProvider"/> for
+            the System.ComponentModel.DataAnnotations attribute classes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DataAnnotationsMetadataProvider.GetBindingMetadata(Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadataProviderContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DataAnnotationsMetadataProvider.GetDisplayMetadata(Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadataProviderContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DataAnnotationsMetadataProvider.GetValidationMetadata(Microsoft.AspNet.Mvc.ModelBinding.Metadata.ValidationMetadataProviderContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DataMemberRequiredBindingMetadataProvider">
+            <summary>
+            An <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.IBindingMetadataProvider"/> for <see cref="P:System.Runtime.Serialization.DataMemberAttribute.IsRequired"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DataMemberRequiredBindingMetadataProvider.GetBindingMetadata(Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadataProviderContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultBindingMetadataProvider">
+            <summary>
+            A default implementation of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.IBindingMetadataProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultBindingMetadataProvider.GetBindingMetadata(Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadataProviderContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultCompositeMetadataDetailsProvider">
+            <summary>
+            A default implementation of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ICompositeMetadataDetailsProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultCompositeMetadataDetailsProvider.#ctor(System.Collections.Generic.IEnumerable{Microsoft.AspNet.Mvc.ModelBinding.Metadata.IMetadataDetailsProvider})">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultCompositeMetadataDetailsProvider"/>.
+            </summary>
+            <param name="providers">The set of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.IMetadataDetailsProvider"/> instances.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultCompositeMetadataDetailsProvider.GetBindingMetadata(Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadataProviderContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultCompositeMetadataDetailsProvider.GetDisplayMetadata(Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadataProviderContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultCompositeMetadataDetailsProvider.GetValidationMetadata(Microsoft.AspNet.Mvc.ModelBinding.Metadata.ValidationMetadataProviderContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultMetadataDetailsCache">
+            <summary>
+            A cache of metadata objects for a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata"/>.
+            </summary>
+            <remarks>
+            These instances are shared by all <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata"/> instances representing
+            the same <see cref="T:System.Type"/>, property, or parameter. Any modifications to the data must be
+            thread-safe for multiple readers and writers.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultMetadataDetailsCache.#ctor(Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity,System.Collections.Generic.IReadOnlyList{System.Object})">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultMetadataDetailsCache"/>.
+            </summary>
+            <param name="key">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity"/>.</param>
+            <param name="attributes">The set of model attributes.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultMetadataDetailsCache.Attributes">
+            <summary>
+            Gets or sets the set of model attributes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultMetadataDetailsCache.BindingMetadata">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadata"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultMetadataDetailsCache.DisplayMetadata">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultMetadataDetailsCache.Key">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultMetadataDetailsCache.PropertyAccessor">
+            <summary>
+            Gets or sets a property accessor delegate to get the property value from a model object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultMetadataDetailsCache.PropertySetter">
+            <summary>
+            Gets or sets a property setter delegate to set the property value on a model object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultMetadataDetailsCache.ValidationMetadata">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ValidationMetadata"/>
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata">
+            <summary>
+            A default <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/> implementation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.#ctor(Microsoft.AspNet.Mvc.ModelBinding.IModelMetadataProvider,Microsoft.AspNet.Mvc.ModelBinding.Metadata.ICompositeMetadataDetailsProvider,Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultMetadataDetailsCache)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata"/>.
+            </summary>
+            <param name="provider">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelMetadataProvider"/>.</param>
+            <param name="detailsProvider">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ICompositeMetadataDetailsProvider"/>.</param>
+            <param name="cache">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultMetadataDetailsCache"/>.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.Attributes">
+            <summary>
+            Gets the set of attributes for the current instance.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.BindingMetadata">
+            <summary>
+            Gets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadata"/> for the current instance.
+            </summary>
+            <remarks>
+            Accessing this property will populate the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadata"/> if necessary.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.DisplayMetadata">
+            <summary>
+            Gets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata"/> for the current instance.
+            </summary>
+            <remarks>
+            Accessing this property will populate the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata"/> if necessary.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.ValidationMetadata">
+            <summary>
+            Gets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ValidationMetadata"/> for the current instance.
+            </summary>
+            <remarks>
+            Accessing this property will populate the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ValidationMetadata"/> if necessary.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.AdditionalValues">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.BindingSource">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.BinderModelName">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.BinderType">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.ConvertEmptyStringToNull">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.DataTypeName">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.Description">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.DisplayFormatString">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.DisplayName">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.EditFormatString">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.EnumDisplayNamesAndValues">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.EnumNamesAndValues">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.HasNonDefaultEditFormat">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.HideSurroundingHtml">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.HtmlEncode">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.IsEnum">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.IsFlagsEnum">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.IsReadOnly">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.IsRequired">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.NullDisplayText">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.Order">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.Properties">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.PropertyBindingPredicateProvider">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.ShowForDisplay">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.ShowForEdit">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.SimpleDisplayProperty">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.TemplateHint">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata.ValidatorMetadata">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadataProvider">
+            <summary>
+            A default implementation of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelMetadataProvider"/> based on reflection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadataProvider.#ctor(Microsoft.AspNet.Mvc.ModelBinding.Metadata.ICompositeMetadataDetailsProvider)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadataProvider"/>.
+            </summary>
+            <param name="detailsProvider">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ICompositeMetadataDetailsProvider"/>.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadataProvider.DetailsProvider">
+            <summary>
+            Gets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ICompositeMetadataDetailsProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadataProvider.GetMetadataForProperties(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadataProvider.GetMetadataForType(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadataProvider.CreateModelMetadata(Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultMetadataDetailsCache)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/> from a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultMetadataDetailsCache"/>.
+            </summary>
+            <param name="entry">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultMetadataDetailsCache"/> entry with cached data.</param>
+            <returns>A new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/> instance.</returns>
+            <remarks>
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadataProvider"/> will always create instances of
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata"/> .Override this method to create a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/>
+            of a different concrete type.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadataProvider.CreatePropertyCacheEntries(Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity)">
+            <summary>
+            Creates the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultMetadataDetailsCache"/> entries for the properties of a model
+            <see cref="T:System.Type"/>.
+            </summary>
+            <param name="key">
+            The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity"/> identifying the model <see cref="T:System.Type"/>.
+            </param>
+            <returns>A cache object for each property of the model <see cref="T:System.Type"/>.</returns>
+            <remarks>
+            The results of this method will be cached and used to satisfy calls to
+            <see cref="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadataProvider.GetMetadataForProperties(System.Type)"/>. Override this method to provide a different
+            set of property data.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadataProvider.CreateTypeCacheEntry(Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity)">
+            <summary>
+            Creates the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultMetadataDetailsCache"/> entry for a model <see cref="T:System.Type"/>.
+            </summary>
+            <param name="key">
+            The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity"/> identifying the model <see cref="T:System.Type"/>.
+            </param>
+            <returns>A cache object for the model <see cref="T:System.Type"/>.</returns>
+            <remarks>
+            The results of this method will be cached and used to satisfy calls to
+            <see cref="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadataProvider.GetMetadataForType(System.Type)"/>. Override this method to provide a different
+            set of attributes.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultValidationMetadataProvider">
+            <summary>
+            A default implementation of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.IValidationMetadataProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultValidationMetadataProvider.GetValidationMetadata(Microsoft.AspNet.Mvc.ModelBinding.Metadata.ValidationMetadataProviderContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata">
+            <summary>
+            Display metadata details for a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata.AdditionalValues">
+            <summary>
+            Gets a set of additional values. See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.AdditionalValues"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata.ConvertEmptyStringToNull">
+            <summary>
+            Gets or sets a value indicating whether or not empty strings should be treated as <c>null</c>.
+            See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ConvertEmptyStringToNull"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata.DataTypeName">
+            <summary>
+            Gets or sets the name of the data type.
+            See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.DataTypeName"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata.Description">
+            <summary>
+            Gets or sets a model description.
+            See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.Description"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata.DisplayFormatString">
+            <summary>
+            Gets or sets a display format string for the model.
+            See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.DisplayFormatString"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata.DisplayName">
+            <summary>
+            Gets or sets a display name for the model.
+            See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.DisplayName"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata.EditFormatString">
+            <summary>
+            Gets or sets an edit format string for the model.
+            See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.EditFormatString"/>
+            </summary>
+            <remarks>
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.IDisplayMetadataProvider"/> instances that set this property to a non-<c>null</c>, non-empty,
+            non-default value should also set <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata.HasNonDefaultEditFormat"/> to <c>true</c>.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata.EnumDisplayNamesAndValues">
+            <summary>
+            Gets the ordered display names and values of all <see cref="T:System.Enum"/> values in
+            <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ModelType"/> or <c>Nullable.GetUnderlyingType(ModelType)</c>. See
+            <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.EnumDisplayNamesAndValues"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata.EnumNamesAndValues">
+            <summary>
+            Gets the names and values of all <see cref="T:System.Enum"/> values in <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ModelType"/>
+            or <c>Nullable.GetUnderlyingType(ModelType)</c>. See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.EnumNamesAndValues"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata.HasNonDefaultEditFormat">
+            <summary>
+            Gets or sets a value indicating whether or not the model has a non-default edit format.
+            See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.HasNonDefaultEditFormat"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata.HideSurroundingHtml">
+            <summary>
+            Gets or sets a value indicating if the surrounding HTML should be hidden.
+            See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.HideSurroundingHtml"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata.HtmlEncode">
+            <summary>
+            Gets or sets a value indicating if the model value should be HTML encoded.
+            See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.HtmlEncode"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata.IsEnum">
+            <summary>
+            Gets a value indicating whether <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ModelType"/> or
+            <c>Nullable.GetUnderlyingType(ModelType)</c> is for an <see cref="T:System.Enum"/>. See
+            <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.IsEnum"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata.IsFlagsEnum">
+            <summary>
+            Gets a value indicating whether <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ModelType"/> or
+            <c>Nullable.GetUnderlyingType(ModelType)</c> is for an <see cref="T:System.Enum"/> with an associated
+            <see cref="T:System.FlagsAttribute"/>. See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.IsFlagsEnum"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata.NullDisplayText">
+            <summary>
+            Gets or sets the text to display when the model value is null.
+            See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.NullDisplayText"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata.Order">
+            <summary>
+            Gets or sets the order.
+            See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.Order"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata.ShowForDisplay">
+            <summary>
+            Gets or sets a value indicating whether or not to include in the model value in display.
+            See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ShowForDisplay"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata.ShowForEdit">
+            <summary>
+            Gets or sets a value indicating whether or not to include in the model value in an editor.
+            See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ShowForEdit"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata.SimpleDisplayProperty">
+            <summary>
+            Gets or sets a the property name of a model property to use for display.
+            See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.SimpleDisplayProperty"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata.TemplateHint">
+            <summary>
+            Gets or sets a hint for location of a display or editor template.
+            See <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.TemplateHint"/>
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadataProviderContext">
+            <summary>
+            A context for and <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.IDisplayMetadataProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadataProviderContext.#ctor(Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity,System.Collections.Generic.IReadOnlyList{System.Object})">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadataProviderContext"/>.
+            </summary>
+            <param name="key">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity"/> for the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/>.</param>
+            <param name="attributes">The attributes for the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/>.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadataProviderContext.Attributes">
+            <summary>
+            Gets the attributes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadataProviderContext.Key">
+            <summary>
+            Gets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadataProviderContext.DisplayMetadata">
+            <summary>
+            Gets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.IBindingMetadataProvider">
+            <summary>
+            Provides <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadata"/> for a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.IBindingMetadataProvider.GetBindingMetadata(Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadataProviderContext)">
+            <summary>
+            Gets the values for properties of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata"/>. 
+            </summary>
+            <param name="context">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.BindingMetadataProviderContext"/>.</param>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ICompositeMetadataDetailsProvider">
+            <summary>
+            A composite <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.IMetadataDetailsProvider"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.IDisplayMetadataProvider">
+            <summary>
+            Provides <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata"/> for a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.IDisplayMetadataProvider.GetDisplayMetadata(Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadataProviderContext)">
+            <summary>
+            Gets the values for properties of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadata"/>. 
+            </summary>
+            <param name="context">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DisplayMetadataProviderContext"/>.</param>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.IMetadataDetailsProvider">
+            <summary>
+            Marker interface for a provider of metadata details about model objects. Implementations should
+            implement one or more of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.IBindingMetadataProvider"/>, <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.IDisplayMetadataProvider"/>, 
+            and <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.IValidationMetadataProvider"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.IValidationMetadataProvider">
+            <summary>
+            Provides <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ValidationMetadata"/> for a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.DefaultModelMetadata"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.IValidationMetadataProvider.GetValidationMetadata(Microsoft.AspNet.Mvc.ModelBinding.Metadata.ValidationMetadataProviderContext)">
+            <summary>
+            Gets the values for properties of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ValidationMetadata"/>. 
+            </summary>
+            <param name="context">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ValidationMetadataProviderContext"/>.</param>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity">
+            <summary>
+            A key type which identifies a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity.ForType(System.Type)">
+            <summary>
+            Creates a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity"/> for the provided model <see cref="T:System.Type"/>.
+            </summary>
+            <param name="modelType">The model <see cref="T:System.Type"/>.</param>
+            <returns>A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity"/>.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity.ForParameter(System.Reflection.ParameterInfo)">
+            <summary>
+            Creates a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity"/> for the provided <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity.ParameterInfo"/>.
+            </summary>
+            <param name="parameterInfo">The model parameter.</param>
+            <returns>A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity"/>.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity.ForProperty(System.Type,System.String,System.Type)">
+            <summary>
+            Creates a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity"/> for the provided property.
+            </summary>
+            <param name="modelType">The model type.</param>
+            <param name="name">The name of the property.</param>
+            <param name="containerType">The container type of the model property.</param>
+            <returns>A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity"/>.</returns>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity.ContainerType">
+            <summary>
+            Gets the <see cref="T:System.Type"/> defining the model property respresented by the current
+            instance, or <c>null</c> if the current instance does not represent a property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity.ParameterInfo">
+            <summary>
+            Gets the <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity.ParameterInfo"/> represented by the current instance, or <c>null</c>
+            if the current instance does not represent a parameter.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity.ModelType">
+            <summary>
+            Gets the <see cref="T:System.Type"/> represented by the current instance.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity.MetadataKind">
+            <summary>
+            Gets a value indicating the kind of metadata represented by the current instance.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity.Name">
+            <summary>
+            Gets the name of the current instance if it represents a parameter or property, or <c>null</c> if
+            the current instance represents a type.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataKind">
+            <summary>
+            Enumeration for the kinds of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/>
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataKind.Type">
+            <summary>
+            Used for <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/> for a <see cref="T:System.Type"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataKind.Property">
+            <summary>
+            Used for <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/> for a property.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ValidationMetadata">
+            <summary>
+            Validation metadata details for a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ValidationMetadata.ValiatorMetadata">
+            <summary>
+            Gets a list of metadata items for validators.
+            </summary>
+            <remarks>
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.IValidationMetadataProvider"/> implementations should store metadata items
+            in this list, to be consumed later by an <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IModelValidatorProvider"/>.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ValidationMetadataProviderContext">
+            <summary>
+            A context for an <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.IValidationMetadataProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ValidationMetadataProviderContext.#ctor(Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity,System.Collections.Generic.IReadOnlyList{System.Object})">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ValidationMetadataProviderContext"/>.
+            </summary>
+            <param name="key">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity"/> for the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/>.</param>
+            <param name="attributes">The attributes for the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/>.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ValidationMetadataProviderContext.Attributes">
+            <summary>
+            Gets the attributes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ValidationMetadataProviderContext.Key">
+            <summary>
+            Gets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ModelMetadataIdentity"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ValidationMetadataProviderContext.ValidationMetadata">
+            <summary>
+            Gets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Metadata.ValidationMetadata"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.ModelAttributes">
+            <summary>
+            Provides static methods which can be used to get a combined list of attributes associated
+            with a parameter or property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelAttributes.GetAttributesForParameter(System.Reflection.ParameterInfo)">
+            <summary>
+            Gets the attributes for the given <paramref name="parameter"/>.
+            </summary>
+            <param name="parameter">A <see cref="T:System.Reflection.ParameterInfo"/> for which attributes need to be resolved.
+            </param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> containing the attributes on the
+            <paramref name="parameter"/> before the attributes on the <paramref name="parameter"/> type.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelAttributes.GetAttributesForProperty(System.Type,System.Reflection.PropertyInfo)">
+            <summary>
+            Gets the attributes for the given <paramref name="property"/>.
+            </summary>
+            <param name="type">The <see cref="T:System.Type"/> in which caller found <paramref name="property"/>.
+            </param>
+            <param name="property">A <see cref="T:System.Reflection.PropertyInfo"/> for which attributes need to be resolved.
+            </param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> containing the attributes on the
+            <paramref name="property"/> before the attributes on the <paramref name="property"/> type.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ModelAttributes.GetAttributesForType(System.Type)">
+            <summary>
+            Gets the attributes for the given <paramref name="type"/>.
+            </summary>
+            <param name="type">The <see cref="T:System.Type"/> for which attributes need to be resolved.
+            </param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> containing the attributes on the
+            <paramref name="type"/>.</returns>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.MultipleBodyParametersOrPropertiesAreNotAllowed">
+            <summary>
+            More than one parameter and/or property is bound to the HTTP request's content.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatMultipleBodyParametersOrPropertiesAreNotAllowed">
+            <summary>
+            More than one parameter and/or property is bound to the HTTP request's content.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.ArgumentCannotBeNullOrEmpty">
+            <summary>
+            Value cannot be null or empty.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatArgumentCannotBeNullOrEmpty">
+            <summary>
+            Value cannot be null or empty.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.KeyValuePair_BothKeyAndValueMustBePresent">
+            <summary>
+            A value is required.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatKeyValuePair_BothKeyAndValueMustBePresent">
+            <summary>
+            A value is required.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.Common_PropertyNotFound">
+            <summary>
+            The property {0}.{1} could not be found.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatCommon_PropertyNotFound(System.Object,System.Object)">
+            <summary>
+            The property {0}.{1} could not be found.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.Common_ParameterNotFound">
+            <summary>
+            The parameter '{0}' could not be found.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatCommon_ParameterNotFound(System.Object)">
+            <summary>
+            The parameter '{0}' could not be found.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.DataAnnotationsModelValidatorProvider_ConstructorRequirements">
+            <summary>
+            The type '{0}' must have a public constructor which accepts a single parameter of type '{1}'.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatDataAnnotationsModelValidatorProvider_ConstructorRequirements(System.Object,System.Object)">
+            <summary>
+            The type '{0}' must have a public constructor which accepts a single parameter of type '{1}'.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.JQuerySyntaxMissingClosingBracket">
+            <summary>
+            The key is invalid JQuery syntax because it is missing a closing bracket.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatJQuerySyntaxMissingClosingBracket">
+            <summary>
+            The key is invalid JQuery syntax because it is missing a closing bracket.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.MissingDataMemberIsRequired">
+            <summary>
+            Property '{0}' on type '{1}' is invalid. Value-typed properties marked as [Required] must also be marked with [DataMember(IsRequired=true)] to be recognized as required. Consider attributing the declaring type with [DataContract] and the property with [DataMember(IsRequired=true)].
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatMissingDataMemberIsRequired(System.Object,System.Object)">
+            <summary>
+            Property '{0}' on type '{1}' is invalid. Value-typed properties marked as [Required] must also be marked with [DataMember(IsRequired=true)] to be recognized as required. Consider attributing the declaring type with [DataContract] and the property with [DataMember(IsRequired=true)].
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.MissingRequiredMember">
+            <summary>
+            The '{0}' property is required.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatMissingRequiredMember(System.Object)">
+            <summary>
+            The '{0}' property is required.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.ModelBinderConfig_ValueInvalid">
+            <summary>
+            The value '{0}' is not valid for {1}.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatModelBinderConfig_ValueInvalid(System.Object,System.Object)">
+            <summary>
+            The value '{0}' is not valid for {1}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.ModelBinderConfig_ValueRequired">
+            <summary>
+            A value is required.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatModelBinderConfig_ValueRequired">
+            <summary>
+            A value is required.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.ModelBinderUtil_ModelCannotBeNull">
+            <summary>
+            The binding context has a null Model, but this binder requires a non-null model of type '{0}'.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatModelBinderUtil_ModelCannotBeNull(System.Object)">
+            <summary>
+            The binding context has a null Model, but this binder requires a non-null model of type '{0}'.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.ModelBinderUtil_ModelInstanceIsWrong">
+            <summary>
+            The binding context has a Model of type '{0}', but this binder can only operate on models of type '{1}'.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatModelBinderUtil_ModelInstanceIsWrong(System.Object,System.Object)">
+            <summary>
+            The binding context has a Model of type '{0}', but this binder can only operate on models of type '{1}'.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.ModelBinderUtil_ModelMetadataCannotBeNull">
+            <summary>
+            The binding context cannot have a null ModelMetadata.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatModelBinderUtil_ModelMetadataCannotBeNull">
+            <summary>
+            The binding context cannot have a null ModelMetadata.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.ModelBinderUtil_ModelTypeIsWrong">
+            <summary>
+            The binding context has a ModelType of '{0}', but this binder can only operate on models of type '{1}'.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatModelBinderUtil_ModelTypeIsWrong(System.Object,System.Object)">
+            <summary>
+            The binding context has a ModelType of '{0}', but this binder can only operate on models of type '{1}'.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.ModelBindingContext_ModelMetadataMustBeSet">
+            <summary>
+            The ModelMetadata property must be set before accessing this property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatModelBindingContext_ModelMetadataMustBeSet">
+            <summary>
+            The ModelMetadata property must be set before accessing this property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.PropertyBindingPredicateProvider_WrongType">
+            <summary>
+            The type '{0}' does not implement the interface '{1}'.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatPropertyBindingPredicateProvider_WrongType(System.Object,System.Object)">
+            <summary>
+            The type '{0}' does not implement the interface '{1}'.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.ValidatableObjectAdapter_IncompatibleType">
+            <summary>
+            The model object inside the metadata claimed to be compatible with '{0}', but was actually '{1}'.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatValidatableObjectAdapter_IncompatibleType(System.Object,System.Object)">
+            <summary>
+            The model object inside the metadata claimed to be compatible with '{0}', but was actually '{1}'.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.ValidationAttributeOnField">
+            <summary>
+            Field '{0}' on type '{1}' is attributed with one or more validation attributes. Validation attributes on fields are not supported. Consider using a public property for validation instead.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatValidationAttributeOnField(System.Object,System.Object)">
+            <summary>
+            Field '{0}' on type '{1}' is attributed with one or more validation attributes. Validation attributes on fields are not supported. Consider using a public property for validation instead.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.ValidationAttributeOnNonPublicProperty">
+            <summary>
+            Non-public property '{0}' on type '{1}' is attributed with one or more validation attributes. Validation attributes on non-public properties are not supported. Consider using a public property for validation instead.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatValidationAttributeOnNonPublicProperty(System.Object,System.Object)">
+            <summary>
+            Non-public property '{0}' on type '{1}' is attributed with one or more validation attributes. Validation attributes on non-public properties are not supported. Consider using a public property for validation instead.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.Validation_InvalidFieldCannotBeReset">
+            <summary>
+            A field previously marked invalid should not be marked valid.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatValidation_InvalidFieldCannotBeReset">
+            <summary>
+            A field previously marked invalid should not be marked valid.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.Validation_InvalidFieldCannotBeReset_ToSkipped">
+            <summary>
+            A field previously marked invalid should not be marked skipped.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatValidation_InvalidFieldCannotBeReset_ToSkipped">
+            <summary>
+            A field previously marked invalid should not be marked skipped.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.Validation_ValueNotFound">
+            <summary>
+            A value is required but was not present in the request.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatValidation_ValueNotFound">
+            <summary>
+            A value is required but was not present in the request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.ValueProviderResult_CannotConvertEnum">
+            <summary>
+            Cannot convert value '{0}' to enum type '{1}'.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatValueProviderResult_CannotConvertEnum(System.Object,System.Object)">
+            <summary>
+            Cannot convert value '{0}' to enum type '{1}'.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.ValueProviderResult_NoConverterExists">
+            <summary>
+            The parameter conversion from type '{0}' to type '{1}' failed because no type converter can convert between these types.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatValueProviderResult_NoConverterExists(System.Object,System.Object)">
+            <summary>
+            The parameter conversion from type '{0}' to type '{1}' failed because no type converter can convert between these types.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.DataAnnotationsModelMetadataProvider_UnknownProperty">
+            <summary>
+            {0} has a DisplayColumn attribute for {1}, but property {1} does not exist.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatDataAnnotationsModelMetadataProvider_UnknownProperty(System.Object,System.Object)">
+            <summary>
+            {0} has a DisplayColumn attribute for {1}, but property {1} does not exist.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.DataAnnotationsModelMetadataProvider_UnreadableProperty">
+            <summary>
+            {0} has a DisplayColumn attribute for {1}, but property {1} does not have a public 'get' method.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatDataAnnotationsModelMetadataProvider_UnreadableProperty(System.Object,System.Object)">
+            <summary>
+            {0} has a DisplayColumn attribute for {1}, but property {1} does not have a public 'get' method.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.ModelStateDictionary_MaxModelStateErrors">
+            <summary>
+            The maximum number of allowed model errors has been reached.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatModelStateDictionary_MaxModelStateErrors">
+            <summary>
+            The maximum number of allowed model errors has been reached.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.BinderType_MustBeIModelBinderOrIModelBinderProvider">
+            <summary>
+            The type '{0}' must implement either '{1}' or '{2}' to be used as a model binder.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatBinderType_MustBeIModelBinderOrIModelBinderProvider(System.Object,System.Object,System.Object)">
+            <summary>
+            The type '{0}' must implement either '{1}' or '{2}' to be used as a model binder.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.ModelBinderUtil_ValueInvalid">
+            <summary>
+            The value '{0}' is not valid for {1}.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatModelBinderUtil_ValueInvalid(System.Object,System.Object)">
+            <summary>
+            The value '{0}' is not valid for {1}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.ModelBinderUtil_ValueInvalidGeneric">
+            <summary>
+            The supplied value is invalid for {0}.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatModelBinderUtil_ValueInvalidGeneric(System.Object)">
+            <summary>
+            The supplied value is invalid for {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.BindingSource_Body">
+            <summary>
+            Body
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatBindingSource_Body">
+            <summary>
+            Body
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.BindingSource_Custom">
+            <summary>
+            Custom
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatBindingSource_Custom">
+            <summary>
+            Custom
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.BindingSource_Form">
+            <summary>
+            Form
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatBindingSource_Form">
+            <summary>
+            Form
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.BindingSource_Header">
+            <summary>
+            Header
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatBindingSource_Header">
+            <summary>
+            Header
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.BindingSource_Services">
+            <summary>
+            Services
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatBindingSource_Services">
+            <summary>
+            Services
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.BindingSource_ModelBinding">
+            <summary>
+            ModelBinding
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatBindingSource_ModelBinding">
+            <summary>
+            ModelBinding
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.BindingSource_Path">
+            <summary>
+            Path
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatBindingSource_Path">
+            <summary>
+            Path
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.BindingSource_Query">
+            <summary>
+            Query
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatBindingSource_Query">
+            <summary>
+            Query
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.BindingSource_CannotBeComposite">
+            <summary>
+            The provided binding source '{0}' is a composite. '{1}' requires that the source must represent a single type of input.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatBindingSource_CannotBeComposite(System.Object,System.Object)">
+            <summary>
+            The provided binding source '{0}' is a composite. '{1}' requires that the source must represent a single type of input.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.BindingSource_MustBeFromRequest">
+            <summary>
+            The provided binding source '{0}' is not a request-based binding source. '{1}' requires that the source must represent data from an HTTP request.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatBindingSource_MustBeFromRequest(System.Object,System.Object)">
+            <summary>
+            The provided binding source '{0}' is not a request-based binding source. '{1}' requires that the source must represent data from an HTTP request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.BindingSource_CannotBeGreedy">
+            <summary>
+            The provided binding source '{0}' is a greedy data source. '{1}' does not support greedy data sources.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatBindingSource_CannotBeGreedy(System.Object,System.Object)">
+            <summary>
+            The provided binding source '{0}' is a greedy data source. '{1}' does not support greedy data sources.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Resources.BindingSource_MustBeGreedy">
+            <summary>
+            The provided binding source '{0}' is not a greedy data source. '{1}' only supports greedy data sources.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Resources.FormatBindingSource_MustBeGreedy(System.Object,System.Object)">
+            <summary>
+            The provided binding source '{0}' is not a greedy data source. '{1}' only supports greedy data sources.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.CompositeModelValidatorProvider">
+            <summary>
+            Default implementation for <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.ICompositeModelValidatorProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Validation.CompositeModelValidatorProvider.#ctor(System.Collections.Generic.IEnumerable{Microsoft.AspNet.Mvc.ModelBinding.Validation.IModelValidatorProvider})">
+            <summary>
+            Initializes a new instance of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.CompositeModelValidatorProvider"/>.
+            </summary>
+            <param name="providers">
+            A collection of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IModelValidatorProvider"/> instances.
+            </param>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.DataAnnotationsModelValidatorProvider">
+            <summary>
+            An implementation of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IModelValidatorProvider"/> which providers validators
+            for attributes which derive from <see cref="T:System.ComponentModel.DataAnnotations.ValidationAttribute"/>. It also provides
+            a validator for types which implement <see cref="T:System.ComponentModel.DataAnnotations.IValidatableObject"/>. To support
+            client side validation, you can either register adapters through the static methods
+            on this class, or by having your validation attributes implement
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IClientModelValidator"/>. The logic to support <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IClientModelValidator"/>
+            is implemented in <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.DataAnnotationsModelValidator"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.DataTypeAttributeAdapter">
+            <summary>
+            A validation adapter that is used to map <see cref="T:System.ComponentModel.DataAnnotations.DataTypeAttribute"/>'s to a single client side validation
+            rule.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.DefaultModelValidatorProvider">
+            <summary>
+            A default <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IModelValidatorProvider"/>.
+            </summary>
+            <remarks>
+            The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.DefaultModelValidatorProvider"/> provides validators from <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IModelValidator"/>
+            instances in <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ValidatorMetadata"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Validation.DefaultModelValidatorProvider.GetValidators(Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidatorProviderContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.DefaultObjectValidator">
+            <summary>
+            Recursively validate an object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Validation.DefaultObjectValidator.Validate(Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidationContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.ICompositeModelValidatorProvider">
+            <summary>
+            Represents aggregate of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IModelValidatorProvider"/>s that delegates to its underlying providers.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IExcludeTypeValidationFilter">
+            <summary>
+            Provides an interface which is used to determine if <see cref="T:System.Type"/>s are excluded from model validation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Validation.IExcludeTypeValidationFilter.IsTypeExcluded(System.Type)">
+            <summary>
+            Determines if the given type is excluded from validation.
+            </summary>
+            <param name="type">The <see cref="T:System.Type"/> for which the check is to be performed.</param>
+            <returns>True if the type is to be excluded. False otherwise.</returns>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IModelValidator">
+            <summary>
+            Validates a model value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Validation.IModelValidator.IsRequired">
+            <summary>
+            Gets a value indicating whether or not this validator validates that a required value
+            has been provided for the model.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Validation.IModelValidator.Validate(Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidationContext)">
+            <summary>
+            Validates the model value.
+            </summary>
+            <param name="context">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidationContext"/>.</param>
+            <returns>
+            A list of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidationResult"/> indicating the results of validating the model value.
+            </returns>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IModelValidatorProvider">
+            <summary>
+            Provides validators for a model value.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Validation.IModelValidatorProvider.GetValidators(Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidatorProviderContext)">
+            <summary>
+            Gets the validators for <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidatorProviderContext.ModelMetadata"/>.
+            </summary>
+            <param name="context">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidatorProviderContext"/>.</param>
+            <remarks>
+            Implementations should add <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IModelValidator"/> instances to
+            <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidatorProviderContext.Validators"/>.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IModelValidatorProviderProvider">
+            <summary>
+            Provides an activated collection of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IModelValidatorProvider"/> instances.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Validation.IModelValidatorProviderProvider.ModelValidatorProviders">
+            <summary>
+            Gets a collection of activated <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IModelValidatorProvider"/> instances.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IObjectModelValidator">
+            <summary>
+            Provides methods to validate an object graph.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Validation.IObjectModelValidator.Validate(Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidationContext)">
+            <summary>
+            Validates the given model in <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidationContext.ModelExplorer"/>.
+            </summary>
+            <param name="validationContext">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidationContext"/> associated with the current call.
+            </param>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IValidationExcludeFiltersProvider">
+            <summary>
+            Provides an activated collection of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IExcludeTypeValidationFilter"/> instances.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Validation.IValidationExcludeFiltersProvider.ExcludeFilters">
+            <summary>
+            Gets a collection of activated <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IExcludeTypeValidationFilter"/> instances.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelClientValidationEqualToRule">
+            <summary>
+            Represents client side validation rule that determines if two values are equal.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelClientValidationRule.ValidationType">
+            <summary>
+            Identifier of the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelClientValidationRule"/>. If client-side validation is enabled, default
+            validation attribute generator uses this <see cref="T:System.String"/> as part of the generated "data-val"
+            attribute name. Must be unique in the set of enabled validation rules.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidatorProviderContext">
+            <summary>
+            A context for <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IModelValidatorProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidatorProviderContext.#ctor(Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidatorProviderContext"/>.
+            </summary>
+            <param name="modelMetadata">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/>.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidatorProviderContext.ModelMetadata">
+            <summary>
+            Gets the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidatorProviderContext.ValidatorMetadata">
+            <summary>
+            Gets the validator metadata.
+            </summary>
+            <remarks>
+            This property provides convenience access to <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.ModelMetadata.ValidatorMetadata"/>.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidatorProviderContext.Validators">
+            <summary>
+            Gets the list of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IModelValidator"/> instances. <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.IModelValidatorProvider"/> instances
+            should add validators to this list when
+            <see cref="M:Microsoft.AspNet.Mvc.ModelBinding.Validation.IModelValidatorProvider.GetValidators(Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidatorProviderContext)"/>
+            is called.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidationContext.GetChildValidationContext(Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidationContext,Microsoft.AspNet.Mvc.ModelBinding.ModelExplorer)">
+            <summary>
+            Constructs a new instance of the <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidationContext"/> class using the
+            <paramref name="parentContext" /> and <paramref name="modelExplorer"/>.
+            </summary>
+            <param name="parentContext">Existing <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidationContext"/>.</param>
+            <param name="modelExplorer"><see cref="P:Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidationContext.ModelExplorer"/> associated with the new 
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.ModelValidationContext"/>.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.Validation.SimpleTypesExcludeFilter">
+            <summary>
+            Identifies the simple types that the default model binding validation will exclude. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Validation.SimpleTypesExcludeFilter.IsTypeExcluded(System.Type)">
+            <summary>
+            Returns true if the given type will be excluded from the default model validation. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.Validation.SimpleTypesExcludeFilter.IsSimpleType(System.Type)">
+            <summary>
+            Returns true if the given type is the underlying types that <see cref="M:Microsoft.AspNet.Mvc.ModelBinding.Validation.SimpleTypesExcludeFilter.IsTypeExcluded(System.Type)"/> will exclude.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSourceValueProvider">
+            <summary>
+            A value provider which provides data from a specific <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.BindingSourceValueProvider.BindingSource"/>.
+            </summary>
+            <remarks>
+            <para>
+            A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSourceValueProvider"/> is an <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IValueProvider"/> base-implementation which
+            can provide data for all parameters and model properties which specify the corresponding
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/>.
+            </para>
+            <para>
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSourceValueProvider"/> implements <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IBindingSourceValueProvider"/> and will
+            include or exclude itself from the set of value providers based on the model's associated
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/>. Value providers are by-default included; if a model does not
+            specify a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/> then all value providers are valid.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.BindingSourceValueProvider.#ctor(Microsoft.AspNet.Mvc.ModelBinding.BindingSource)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSourceValueProvider"/>.
+            </summary>
+            <param name="bindingSource">
+            The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/>. Must be a single-source (non-composite) with
+            <see cref="P:Microsoft.AspNet.Mvc.ModelBinding.BindingSource.IsGreedy"/> equal to <c>false</c>.
+            </param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.BindingSourceValueProvider.BindingSource">
+            <summary>
+            Gets the corresponding <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.BindingSourceValueProvider.ContainsPrefixAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.BindingSourceValueProvider.GetValueAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.BindingSourceValueProvider.Filter(Microsoft.AspNet.Mvc.ModelBinding.BindingSource)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.CompositeValueProvider">
+            <summary>
+            Represents a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IValueProvider"/> whose values come from a collection of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IValueProvider"/>s.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.CompositeValueProvider.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.CompositeValueProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.CompositeValueProvider.#ctor(System.Collections.Generic.IEnumerable{Microsoft.AspNet.Mvc.ModelBinding.IValueProvider})">
+            <summary>
+            Initializes a new instance of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.CompositeValueProvider"/>.
+            </summary>
+            <param name="valueProviders">The sequence of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IValueProvider"/> to add to this instance of
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.CompositeValueProvider"/>.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.CompositeValueProvider.Create(System.Collections.Generic.IEnumerable{Microsoft.AspNet.Mvc.ModelBinding.IValueProviderFactory},Microsoft.AspNet.Mvc.ModelBinding.ValueProviderFactoryContext)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.CompositeValueProvider"/> from the provided <paramref name="context"/>
+            and <paramref name="factories"/>.
+            </summary>
+            <param name="factories">The set of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IValueProviderFactory"/> instances.</param>
+            <param name="context">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.ValueProviderFactoryContext"/>.</param>
+            <returns>
+            A <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.CompositeValueProvider"/> containing all <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IValueProvider"/> instances
+            created.
+            </returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.CompositeValueProvider.ContainsPrefixAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.CompositeValueProvider.GetValueAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.CompositeValueProvider.GetKeysFromPrefixAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.CompositeValueProvider.InsertItem(System.Int32,Microsoft.AspNet.Mvc.ModelBinding.IValueProvider)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.CompositeValueProvider.SetItem(System.Int32,Microsoft.AspNet.Mvc.ModelBinding.IValueProvider)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.CompositeValueProvider.Filter(Microsoft.AspNet.Mvc.ModelBinding.BindingSource)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.CompositeValueProviderFactory">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.CompositeValueProviderFactory.GetValueProvider(Microsoft.AspNet.Mvc.ModelBinding.ValueProviderFactoryContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.DictionaryBasedValueProvider">
+            <summary>
+            An <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IValueProvider"/> adapter for data stored in an
+            <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.DictionaryBasedValueProvider.#ctor(Microsoft.AspNet.Mvc.ModelBinding.BindingSource,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.DictionaryBasedValueProvider"/>.
+            </summary>
+            <param name="bindingSource">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/> of the data.</param>
+            <param name="values">The values.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.DictionaryBasedValueProvider.ContainsPrefixAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.DictionaryBasedValueProvider.GetValueAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.IBindingSourceValueProvider">
+            <summary>
+            A value provider which is which can filter its contents based on <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/>.
+            </summary>
+            <remarks>
+            Value providers are by-default included. If a model does not specify a <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/>
+            then all value providers are valid.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.IBindingSourceValueProvider.Filter(Microsoft.AspNet.Mvc.ModelBinding.BindingSource)">
+            <summary>
+            Filters the value provider based on <paramref name="bindingSource"/>.
+            </summary>
+            <param name="bindingSource">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/> associated with a model.</param>
+            <returns>
+            The filtered value provider, or <c>null</c> if the value provider does not match
+            <paramref name="bindingSource"/>.
+            </returns>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.ICompositeValueProviderFactory">
+            <summary>
+            Represents an aggregate of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IValueProviderFactory"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.IValueProvider">
+            <summary>
+            Defines the methods that are required for a value provider.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.IValueProvider.ContainsPrefixAsync(System.String)">
+            <summary>
+            Determines whether the collection contains the specified prefix.
+            </summary>
+            <param name="prefix">The prefix to search for.</param>
+            <returns>true if the collection contains the specified prefix; otherwise, false.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.IValueProvider.GetValueAsync(System.String)">
+            <summary>
+            Retrieves a value object using the specified key.
+            </summary>
+            <param name="key">The key of the value object to retrieve.</param>
+            <returns>The value object for the specified key. If the exact key is not found, null.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.IValueProviderFactory.GetValueProvider(Microsoft.AspNet.Mvc.ModelBinding.ValueProviderFactoryContext)">
+            <summary>
+            Get a value provider with values from the given <paramref name="requestContext"/>.
+            </summary>
+            <param name="context">ValueProviderFactoryContext that value provider will populate from</param>
+            <returns>a value provider instance or null</returns>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.IValueProviderFactoryProvider">
+            <summary>
+            Provides an activated collection of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IValueProviderFactory"/> instances.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinding.IValueProviderFactoryProvider.ValueProviderFactories">
+            <summary>
+            Gets a collection of activated IValueProviderFactory instances.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinding.ReadableStringCollectionValueProvider">
+            <summary>
+            An <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IValueProvider"/> adapter for data stored in an <see cref="T:Microsoft.AspNet.Http.IReadableStringCollection"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ReadableStringCollectionValueProvider.#ctor(Microsoft.AspNet.Mvc.ModelBinding.BindingSource,Microsoft.AspNet.Http.IReadableStringCollection,System.Globalization.CultureInfo)">
+            <summary>
+            Creates a provider for <see cref="T:Microsoft.AspNet.Http.IReadableStringCollection"/> wrapping an existing set of key value pairs.
+            </summary>
+            <param name="bindingSource">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/> for the data.</param>
+            <param name="values">The key value pairs to wrap.</param>
+            <param name="culture">The culture to return with ValueProviderResult instances.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ReadableStringCollectionValueProvider.#ctor(Microsoft.AspNet.Mvc.ModelBinding.BindingSource,System.Func{System.Threading.Tasks.Task{Microsoft.AspNet.Http.IReadableStringCollection}},System.Globalization.CultureInfo)">
+            <summary>
+            Creates a provider for <see cref="T:Microsoft.AspNet.Http.IReadableStringCollection"/> wrapping an
+            existing set of key value pairs provided by the delegate.
+            </summary>
+            <param name="bindingSource">The <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.BindingSource"/> for the data.</param>
+            <param name="values">The delegate that provides the key value pairs to wrap.</param>
+            <param name="culture">The culture to return with ValueProviderResult instances.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ReadableStringCollectionValueProvider.ContainsPrefixAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ReadableStringCollectionValueProvider.GetKeysFromPrefixAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelBinding.ReadableStringCollectionValueProvider.GetValueAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.HiddenInputAttribute">
+            <summary>
+            Indicates associated property or all properties of associated type should be edited using an &lt;input&gt;
+            element of type "hidden".
+            </summary>
+            <remarks>
+            When overriding a <see cref="T:Microsoft.AspNet.Mvc.HiddenInputAttribute"/> inherited from a base class, should apply both
+            <c>[HiddenInput(DisplayValue = true)]</c> (if the inherited attribute had <c>DisplayValue = false</c>) and a
+            <see cref="T:System.ComponentModel.DataAnnotations.UIHintAttribute"/> with some value other than "HiddenInput".
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.HiddenInputAttribute.#ctor">
+            <summary>
+            Instantiates a new instance of the <see cref="T:Microsoft.AspNet.Mvc.HiddenInputAttribute"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.HiddenInputAttribute.DisplayValue">
+            <summary>
+            Gets or sets a value indicating whether to display the value as well as provide a hidden &lt;input&gt;
+            element. The default value is <c>true</c>.
+            </summary>
+            <remarks>
+            If <c>false</c>, also causes the default <see cref="T:System.Object"/> display and editor templates to return HTML
+            lacking the usual per-property &lt;div&gt; wrapper around the associated property and the default display
+            "HiddenInput" template to return <c>string.Empty</c> for the associated property. Thus the default
+            <see cref="T:System.Object"/> display template effectively skips the property and the default <see cref="T:System.Object"/>
+            editor template returns only the hidden &lt;input&gt; element for the property.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.IModelNameProvider">
+            <summary>
+            Represents an entity which can provide model name as metadata.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.IModelNameProvider.Name">
+            <summary>
+            Model name.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelMetadataTypeAttribute">
+            <summary>
+            This attribute specifies the metadata class to associate with a data model class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.ModelMetadataTypeAttribute.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.AspNet.Mvc.ModelMetadataTypeAttribute" /> class.
+            </summary>
+            <param name="type">The type of metadata class that is associated with a data model class.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelMetadataTypeAttribute.MetadataType">
+            <summary>
+            Gets the type of metadata class that is associated with a data model class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.FromBodyAttribute">
+            <summary>
+            Specifies that a parameter or property should be bound using the request body.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.FromBodyAttribute.BindingSource">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.FromFormAttribute">
+            <summary>
+            Specifies that a parameter or property should be bound using form-data in the request body.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.FromFormAttribute.BindingSource">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.FromFormAttribute.Name">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.FromHeaderAttribute">
+            <summary>
+            Specifies that a parameter or property should be bound using the request headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.FromHeaderAttribute.BindingSource">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.FromHeaderAttribute.Name">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.FromQueryAttribute">
+            <summary>
+            Specifies that a parameter or property should be bound using the request query string.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.FromQueryAttribute.BindingSource">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.FromQueryAttribute.Name">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.FromRouteAttribute">
+            <summary>
+            Specifies that a parameter or property should be bound using route-data from the current request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.FromRouteAttribute.BindingSource">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.FromRouteAttribute.Name">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.FromServicesAttribute">
+            <summary>
+            Specifies that a parameter or property should be bound using the request services.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.FromServicesAttribute.BindingSource">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.ModelBinderAttribute">
+            <summary>
+            An attribute that can specify a model name or type of <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinder"/> or 
+            <see cref="T:Microsoft.AspNet.Mvc.ModelBinding.IModelBinderProvider"/> to use for binding.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinderAttribute.BinderType">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinderAttribute.BindingSource">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.ModelBinderAttribute.Name">
+            <inheritdoc />
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.Encodings.UTF8EncodingWithoutBOM">
+            <summary>
+            Returns UTF8 Encoding without BOM and throws on invalid bytes.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.Encodings.UTF16EncodingLittleEndian">
+            <summary>
+            Returns UTF16 Encoding which uses littleEndian byte order with BOM and throws on invalid bytes.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.TaskHelper">
+            <summary>
+            Utility methods for dealing with <see cref="T:System.Threading.Tasks.Task"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.TaskHelper.WaitAndThrowIfFaulted(System.Threading.Tasks.Task)">
+            <summary>
+            Waits for the task to complete and throws the first faulting exception if the task is faulted.
+            It preserves the original stack trace when throwing the exception.
+            </summary>
+            <remarks>
+            Invoking this method is equivalent to calling Wait() on the <paramref name="task" /> if it is not completed.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.TaskHelper.WaitAndThrowIfFaulted``1(System.Threading.Tasks.Task{``0})">
+            <summary>
+            Waits for the task to complete and throws the first faulting exception if the task is faulted.
+            It preserves the original stack trace when throwing the exception.
+            </summary>
+            <remarks>
+            Invoking this method is equivalent to calling <see cref="P:System.Threading.Tasks.Task`1.Result"/> on the
+            <paramref name="task"/> if it is not completed.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.TypeHelper.ObjectToDictionary(System.Object)">
+             <summary>
+             Given an object, adds each instance property with a public get method as a key and its
+             associated value to a dictionary.
+            
+             If the object is already an <see cref="T:System.Collections.Generic.IDictionary`2"/> instance, then a copy
+             is returned.
+             </summary>
+             <remarks>
+             The implementation of PropertyHelper will cache the property accessors per-type. This is
+             faster when the the same type is used multiple times with ObjectToDictionary.
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Framework.Internal.PropertyHelper.#ctor(System.Reflection.PropertyInfo)">
+            <summary>
+            Initializes a fast <see cref="T:Microsoft.Framework.Internal.PropertyHelper"/>.
+            This constructor does not cache the helper. For caching, use <see cref="M:Microsoft.Framework.Internal.PropertyHelper.GetProperties(System.Object)"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Framework.Internal.PropertyHelper.GetProperties(System.Object)">
+            <summary>
+            Creates and caches fast property helpers that expose getters for every public get property on the
+            underlying type.
+            </summary>
+            <param name="instance">the instance to extract property accessors for.</param>
+            <returns>a cached array of all public property getters from the underlying type of target instance.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Framework.Internal.PropertyHelper.GetProperties(System.Type)">
+            <summary>
+            Creates and caches fast property helpers that expose getters for every public get property on the
+            specified type.
+            </summary>
+            <param name="type">the type to extract property accessors for.</param>
+            <returns>a cached array of all public property getters from the type of target instance.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Framework.Internal.PropertyHelper.GetVisibleProperties(System.Object)">
+            <summary>
+            <para>
+            Creates and caches fast property helpers that expose getters for every non-hidden get property
+            on the specified type.
+            </para>
+            <para>
+            <see cref="M:Microsoft.Framework.Internal.PropertyHelper.GetVisibleProperties(System.Object)"/> excludes properties defined on base types that have been
+            hidden by definitions using the <c>new</c> keyword.
+            </para>
+            </summary>
+            <param name="instance">The instance to extract property accessors for.</param>
+            <returns>
+            A cached array of all public property getters from the instance's type.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Framework.Internal.PropertyHelper.GetVisibleProperties(System.Type)">
+            <summary>
+            <para>
+            Creates a caches fast property helpers that expose getters for every non-hidden get property
+            on the specified type.
+            </para>
+            <para>
+            <see cref="M:Microsoft.Framework.Internal.PropertyHelper.GetVisibleProperties(System.Object)"/> excludes properties defined on base types that have been
+            hidden by definitions using the <c>new</c> keyword.
+            </para>
+            </summary>
+            <param name="type">The type to extract property accessors for.</param>
+            <returns>
+            A cached array of all public property getters from the type.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Framework.Internal.PropertyHelper.MakeFastPropertyGetter(System.Reflection.PropertyInfo)">
+            <summary>
+            Creates a single fast property getter. The result is not cached.
+            </summary>
+            <param name="propertyInfo">propertyInfo to extract the getter for.</param>
+            <returns>a fast getter.</returns>
+            <remarks>
+            This method is more memory efficient than a dynamically compiled lambda, and about the
+            same speed.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Framework.Internal.PropertyHelper.MakeFastPropertySetter(System.Reflection.PropertyInfo)">
+            <summary>
+            Creates a single fast property setter for reference types. The result is not cached.
+            </summary>
+            <param name="propertyInfo">propertyInfo to extract the setter for.</param>
+            <returns>a fast getter.</returns>
+            <remarks>
+            This method is more memory efficient than a dynamically compiled lambda, and about the
+            same speed. This only works for reference types.
+            </remarks>
+        </member>
+    </members>
+</doc>

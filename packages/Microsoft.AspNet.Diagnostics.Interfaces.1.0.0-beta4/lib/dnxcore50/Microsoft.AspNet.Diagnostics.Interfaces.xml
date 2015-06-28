@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AspNet.Diagnostics.Interfaces</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.AspNet.Diagnostics.IStatusCodePagesFeature">
+            <summary>
+            Represents the Status code pages feature.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Diagnostics.IStatusCodePagesFeature.Enabled">
+            <summary>
+            Indicates if the status code middleware will handle responses.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Diagnostics.ICompilationException">
+            <summary>
+            Specifies the contract for an exception representing compilation failure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Diagnostics.ICompilationException.CompilationFailures">
+            <summary>
+            Gets a sequence of <see cref="T:Microsoft.AspNet.Diagnostics.ICompilationFailure"/> with compilation failures.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Diagnostics.ICompilationFailure">
+            <summary>
+            Specifies the contract for a file that fails compilation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Diagnostics.ICompilationFailure.SourceFilePath">
+            <summary>
+            Path of the file that produced the compilation exception.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Diagnostics.ICompilationFailure.SourceFileContent">
+            <summary>
+            Contents of the file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Diagnostics.ICompilationFailure.CompiledContent">
+            <summary>
+            Contents being compiled.
+            </summary>
+            <remarks>
+            For templated files, the <see cref="P:Microsoft.AspNet.Diagnostics.ICompilationFailure.SourceFileContent"/> represents the original content and
+            <see cref="P:Microsoft.AspNet.Diagnostics.ICompilationFailure.CompiledContent"/> represents the transformed content. This property can be null if
+            the exception is encountered during transformation.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Diagnostics.ICompilationFailure.Messages">
+            <summary>
+            Gets a sequence of <see cref="T:Microsoft.AspNet.Diagnostics.ICompilationMessage"/> produced as a result of compilation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Diagnostics.ICompilationMessage">
+            <summary>
+            Specifies the contract for diagnostic messages produced as result of compiling an instance
+            of <see cref="T:Microsoft.AspNet.Diagnostics.ICompilationFailure"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Diagnostics.ICompilationMessage.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Diagnostics.ICompilationMessage.StartLine">
+            <summary>
+            Gets the zero-based line index for the start of the compilation error.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Diagnostics.ICompilationMessage.StartColumn">
+            <summary>
+            Gets the zero-based column index for the start of the compilation error.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Diagnostics.ICompilationMessage.EndLine">
+            <summary>
+            Gets the zero-based line index for the end of the compilation error.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Diagnostics.ICompilationMessage.EndColumn">
+            <summary>
+            Gets the zero-based column index for the end of the compilation error.
+            </summary>
+        </member>
+    </members>
+</doc>
