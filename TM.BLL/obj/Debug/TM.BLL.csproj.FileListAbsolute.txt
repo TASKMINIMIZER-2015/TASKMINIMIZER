@@ -13,7 +13,6 @@ D:\TASKMINIMIZER\TM.BLL\obj\Debug\TM.BLL.csprojResolveAssemblyReference.cache
 E:\TASKMINIMIZER\TM.BLL\bin\Debug\TM.BLL.dll.config
 E:\TASKMINIMIZER\TM.BLL\bin\Debug\TM.BLL.dll
 E:\TASKMINIMIZER\TM.BLL\bin\Debug\TM.BLL.pdb
-E:\TASKMINIMIZER\TM.BLL\obj\Debug\TM.BLL.csprojResolveAssemblyReference.cache
 E:\TASKMINIMIZER\TM.BLL\obj\Debug\TM.BLL.dll
 E:\TASKMINIMIZER\TM.BLL\obj\Debug\TM.BLL.pdb
 E:\TASKMINIMIZER\TM.BLL\bin\Debug\EntityFramework.dll

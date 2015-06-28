@@ -31,7 +31,6 @@ D:\TASKMINIMIZER\TM.WEB\bin\System.Web.WebPages.Razor.xml
 D:\TASKMINIMIZER\TM.WEB\obj\Debug\TM.WEB.dll
 D:\TASKMINIMIZER\TM.WEB\obj\Debug\TM.WEB.pdb
 D:\TASKMINIMIZER\TM.WEB\obj\Debug\TM.WEB.csprojResolveAssemblyReference.cache
-E:\TASKMINIMIZER\TM.WEB\obj\Debug\TM.WEB.csprojResolveAssemblyReference.cache
 E:\TASKMINIMIZER\TM.WEB\bin\TM.WEB.dll
 E:\TASKMINIMIZER\TM.WEB\bin\TM.WEB.pdb
 E:\TASKMINIMIZER\TM.WEB\bin\Antlr3.Runtime.dll
@@ -68,3 +67,4 @@ E:\TASKMINIMIZER\TM.WEB\bin\System.Web.WebPages.Deployment.xml
 E:\TASKMINIMIZER\TM.WEB\bin\System.Web.WebPages.Razor.xml
 E:\TASKMINIMIZER\TM.WEB\obj\Debug\TM.WEB.dll
 E:\TASKMINIMIZER\TM.WEB\obj\Debug\TM.WEB.pdb
+E:\TASKMINIMIZER\TM.WEB\obj\Debug\TM.WEB.csprojResolveAssemblyReference.cache
