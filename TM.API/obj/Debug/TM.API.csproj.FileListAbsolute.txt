@@ -70,7 +70,6 @@ D:\TASKMINIMIZER\TM.API\bin\zh-Hant\System.Spatial.resources.dll
 D:\TASKMINIMIZER\TM.API\obj\Debug\TM.API.dll
 D:\TASKMINIMIZER\TM.API\obj\Debug\TM.API.pdb
 D:\TASKMINIMIZER\TM.API\obj\Debug\TM.API.csprojResolveAssemblyReference.cache
-E:\TASKMINIMIZER\TM.API\obj\Debug\TM.API.csprojResolveAssemblyReference.cache
 E:\TASKMINIMIZER\TM.API\bin\TM.API.dll
 E:\TASKMINIMIZER\TM.API\bin\TM.API.pdb
 E:\TASKMINIMIZER\TM.API\bin\Antlr3.Runtime.dll
@@ -144,3 +143,4 @@ E:\TASKMINIMIZER\TM.API\bin\zh-Hans\System.Spatial.resources.dll
 E:\TASKMINIMIZER\TM.API\bin\zh-Hant\System.Spatial.resources.dll
 E:\TASKMINIMIZER\TM.API\obj\Debug\TM.API.dll
 E:\TASKMINIMIZER\TM.API\obj\Debug\TM.API.pdb
+E:\TASKMINIMIZER\TM.API\obj\Debug\TM.API.csprojResolveAssemblyReference.cache
