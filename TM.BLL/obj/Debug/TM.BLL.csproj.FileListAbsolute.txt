@@ -10,3 +10,14 @@ D:\TASKMINIMIZER\TM.BLL\bin\Debug\Newtonsoft.Json.xml
 D:\TASKMINIMIZER\TM.BLL\obj\Debug\TM.BLL.dll
 D:\TASKMINIMIZER\TM.BLL\obj\Debug\TM.BLL.pdb
 D:\TASKMINIMIZER\TM.BLL\obj\Debug\TM.BLL.csprojResolveAssemblyReference.cache
+E:\TASKMINIMIZER\TM.BLL\bin\Debug\TM.BLL.dll.config
+E:\TASKMINIMIZER\TM.BLL\bin\Debug\TM.BLL.dll
+E:\TASKMINIMIZER\TM.BLL\bin\Debug\TM.BLL.pdb
+E:\TASKMINIMIZER\TM.BLL\obj\Debug\TM.BLL.dll
+E:\TASKMINIMIZER\TM.BLL\obj\Debug\TM.BLL.pdb
+E:\TASKMINIMIZER\TM.BLL\bin\Debug\EntityFramework.dll
+E:\TASKMINIMIZER\TM.BLL\bin\Debug\EntityFramework.SqlServer.dll
+E:\TASKMINIMIZER\TM.BLL\bin\Debug\Newtonsoft.Json.dll
+E:\TASKMINIMIZER\TM.BLL\bin\Debug\EntityFramework.xml
+E:\TASKMINIMIZER\TM.BLL\bin\Debug\EntityFramework.SqlServer.xml
+E:\TASKMINIMIZER\TM.BLL\bin\Debug\Newtonsoft.Json.xml
